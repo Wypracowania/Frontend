@@ -3,27 +3,39 @@
 // Każde ciasteczko wygasa po 1000000ms
 
 export function setTokenCookie(token) {
-  var d = new Date();
+  const d = new Date();
   d.setTime(d.getTime() + 1000000);
-  var expires = 'expires=' + d.toUTCString();
+  const expires = `expires=${d.toUTCString()}`;
   document.cookie = `token=${token}; ${expires};`;
 }
 export function setUserCookie(username) {
-  var d = new Date();
+  const d = new Date();
   d.setTime(d.getTime() + 1000000);
-  var expires = 'expires=' + d.toUTCString();
+  const expires = `expires=${d.toUTCString()}`;
   document.cookie = `username=${username}; ${expires};`;
 }
-export function getCookie(name) {
-  var name = name + '=';
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
+export function getCookie(named) {
+  const name = `${named}=`;
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
+
+  // ca.forEach(function (index, i) {
+  //   let c = ca[i];
+  //   while (c.charAt(0) === ' ') {
+  //     c = c.substring(1);
+  //   }
+  //   if (c.indexOf(name) === 0) {
+  //     return c.substring(name.length, c.length);
+  //   }
+  //   return '';
+  // });
+
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') {
       c = c.substring(1);
     }
-    if (c.indexOf(name) == 0) {
+    if (c.indexOf(name) === 0) {
       return c.substring(name.length, c.length);
     }
   }
@@ -36,13 +48,13 @@ export function deleteSession() {
 }
 // Wykorzystujemy ją do sprawdzania czy uzytkownik ma ciasteczka
 export function userHaveSession() {
-  var username = getCookie('username');
-  var token = getCookie('token');
+  const username = getCookie('username');
+  const token = getCookie('token');
 
   if (username === '' && token === '') {
-    //jeżeli === "" to znaczy że ciasteczko nie ma informacji na temat użytkownika
+    //  jeżeli === "" to znaczy że ciasteczko nie ma informacji na temat użytkownika
     return false;
-  } else {
-    return true;
   }
+
+  return false;
 }
