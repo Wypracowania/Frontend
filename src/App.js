@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
-import Login from './pages/authentication/login.js'
-import PageOne from './pages/examplePage'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './pages/authentication/login';
+import PageOne from './pages/examplePage';
 
 function App() {
-
   return (
     <Router>
       <div className="App">

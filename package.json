@@ -11,7 +11,8 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "styled-components": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +34,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.3",
+    "prettier": "^2.1.2",
+    "prettier-plugin-import-sort": "0.0.6",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "stylelint-webpack-plugin": "^2.1.0"
   }
 }
