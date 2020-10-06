@@ -18,7 +18,7 @@ function App() {
             <Route exact path="/" component={Orders} />
             <Route path="/page-one" component={PageOne} />
             <Route path="/newOrder" component={NewOrder} />
-            <Route path="/allOrders" component={AllOrders} />
+            <Route path="/allOrders/latest" component={AllOrders} />
           </Switch>
         </MainPageTemplate>
       </BrowserRouter>

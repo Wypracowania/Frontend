@@ -7,6 +7,7 @@ const StyledMainPageTemplate = styled.main`
   background-color: #f4f6fc;
   height: 100vh;
   width: calc(100vw - 215px);
+  padding: 82px 108px;
 `;
 
 const MainPageTemplate = ({ children }) => {

@@ -26,9 +26,24 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.6rem;
     }
 
+    a {
+        text-decoration: none;
+    }
+
     .navside__active__button {
         & > div {
-        background-color: #f4f6fc;
+            background-color: #f4f6fc;
+            position: relative;
+
+            &:before {
+                content: '';
+                background-color: #676C7D;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 3px;
+                position: absolute;
+            }
 
         }
     }
