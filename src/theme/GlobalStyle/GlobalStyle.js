@@ -25,6 +25,13 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-size: 1.6rem;
     }
+
+    .navside__active__button {
+        & > div {
+        background-color: #f4f6fc;
+
+        }
+    }
 `;
 
 export default GlobalStyle;

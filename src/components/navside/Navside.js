@@ -9,6 +9,8 @@ import { ReactComponent as LoanIcon } from 'assets/navside/loan.svg';
 import { ReactComponent as MyOrdersIcon } from 'assets/navside/myOrders.svg';
 import { ReactComponent as NewOrderIcon } from 'assets/navside/newOrder.svg';
 import { ReactComponent as SettingsIcon } from 'assets/navside/settings.svg';
+import { ReactComponent as LogoutIcon } from 'assets/navside/logout.svg';
+import { NavLink, Link } from 'react-router-dom';
 
 const StyledNavside = styled.nav`
   position: fixed;
@@ -23,35 +25,77 @@ const StyledNavside = styled.nav`
 `;
 
 const StyledNavsideButtonsWrapper = styled.div`
-  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 175px);
+
+  & > a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  & > a:last-child {
+    margin-top: auto;
+
+    & > div {
+      position: relative;
+
+      &:before {
+        content: '';
+        width: calc(100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top: solid 1px black;
+      }
+    }
+  }
 `;
 
 const Navside = () => {
   return (
     <StyledNavside>
-      <Logo />
+      <Link exact to="/">
+        <Logo />
+      </Link>
       <ProfileTab />
       <StyledNavsideButtonsWrapper>
-        <NavsideButton>
-          <NewOrderIcon />
-          <span>Nowe zamówienie</span>
-        </NavsideButton>
-        <NavsideButton>
-          <MyOrdersIcon />
-          <span>Moje zamówienia</span>
-        </NavsideButton>
-        <NavsideButton>
-          <LoanIcon />
-          <span>Kredyt</span>
-        </NavsideButton>
-        <NavsideButton>
-          <HelpIcon />
-          <span>Pomoc</span>
-        </NavsideButton>
-        <NavsideButton>
-          <SettingsIcon />
-          <span>Ustawienia</span>
-        </NavsideButton>
+        <NavLink to="/newOrder" activeClassName="navside__active__button">
+          <NavsideButton>
+            <NewOrderIcon />
+            <span>Nowe zamówienie</span>
+          </NavsideButton>
+        </NavLink>
+        <NavLink to="/allOrders" activeClassName="navside__active__button">
+          <NavsideButton>
+            <MyOrdersIcon />
+            <span>Moje zamówienia</span>
+          </NavsideButton>
+        </NavLink>
+        <NavLink to="/loan" activeClassName="navside__active__button">
+          <NavsideButton>
+            <LoanIcon />
+            <span>Kredyt</span>
+          </NavsideButton>
+        </NavLink>
+        <NavLink to="/help" activeClassName="navside__active__button">
+          <NavsideButton>
+            <HelpIcon />
+            <span>Pomoc</span>
+          </NavsideButton>
+        </NavLink>
+        <NavLink to="/settings" activeClassName="navside__active__button">
+          <NavsideButton>
+            <SettingsIcon />
+            <span>Ustawienia</span>
+          </NavsideButton>
+        </NavLink>
+        <NavLink to="/logout">
+          <NavsideButton>
+            <LogoutIcon />
+            <span>Logout</span>
+          </NavsideButton>
+        </NavLink>
       </StyledNavsideButtonsWrapper>
     </StyledNavside>
   );

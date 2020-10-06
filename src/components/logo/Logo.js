@@ -5,7 +5,7 @@ import { ReactComponent as LogoImage } from 'assets/images/logo.svg';
 const StyledLogoContainer = styled.header`
   box-sizing: content-box;
   position: relative;
-  padding: 28px;
+  padding: 15px 28px;
 
   & > svg {
     transform: scale(0.8);
