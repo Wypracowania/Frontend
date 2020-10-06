@@ -6,6 +6,7 @@ import Orders from 'pages/orders/Orders';
 import Login from './pages/authentication/login';
 import PageOne from './pages/examplePage';
 import MainPageTemplate from 'template/mainPageTemplate.js/MainPageTemplate';
+import NewOrder from 'pages/orders/newOrder';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Orders} />
             <Route path="/page-one" component={PageOne} />
+            <Route path="/newOrder" component={NewOrder} />
           </Switch>
         </MainPageTemplate>
       </BrowserRouter>
