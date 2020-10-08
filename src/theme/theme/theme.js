@@ -1,1 +1,3 @@
-export const theme = {};
+export const theme = {
+  primaryDark: '#676C7D',
+};

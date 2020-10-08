@@ -66,10 +66,7 @@ const Navside = () => {
             <span>Nowe zamówienie</span>
           </NavsideButton>
         </NavLink>
-        <NavLink
-          to="/allOrders/latest"
-          activeClassName="navside__active__button"
-        >
+        <NavLink to="/allOrders" activeClassName="navside__active__button">
           <NavsideButton>
             <MyOrdersIcon />
             <span>Moje zamówienia</span>

@@ -6,7 +6,7 @@ import Orders from 'pages/orders/Orders';
 import PageOne from './pages/examplePage';
 import MainPageTemplate from 'template/mainPageTemplate.js/MainPageTemplate';
 import NewOrder from 'pages/orders/newOrder';
-import AllOrders from 'pages/orders/allOrders';
+import AllOrders from 'pages/orders/allOrders/allOrders';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
             <Route exact path="/" component={Orders} />
             <Route path="/page-one" component={PageOne} />
             <Route path="/newOrder" component={NewOrder} />
-            <Route path="/allOrders/latest" component={AllOrders} />
+            <Route path="/allOrders" component={AllOrders} />
           </Switch>
         </MainPageTemplate>
       </BrowserRouter>
