@@ -15,7 +15,7 @@ function App() {
         <Navside />
         <MainPageTemplate>
           <Switch>
-            <Route exact path="/" component={Orders} />
+            <Route exact path="/" component={AllOrders} />
             <Route path="/page-one" component={PageOne} />
             <Route path="/newOrder" component={NewOrder} />
             <Route path="/allOrders" component={AllOrders} />

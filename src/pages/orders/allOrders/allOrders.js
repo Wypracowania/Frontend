@@ -121,7 +121,15 @@ const AllOrders = () => {
       });
   }, []);
 
-  const MyOrdersView = () => {
+  const MyOrdersView = ({ orders }) => {
+    if (orders)
+      return (
+        <ul>
+          {orders.map(({ topic }) => (
+            <li>{topic}</li>
+          ))}
+        </ul>
+      );
     return (
       <div>
         <Headline>Brak zamówień</Headline>
@@ -129,6 +137,14 @@ const AllOrders = () => {
         <NewOrderButton />
       </div>
     );
+
+    // return (
+    //   <div>
+    //     <Headline>Brak zamówień</Headline>
+    //     <p>Nie masz żadnych zamówień</p>
+    //     <NewOrderButton />
+    //   </div>
+    // );
   };
 
   const SketchesView = () => {
@@ -168,7 +184,7 @@ const AllOrders = () => {
         <MultiView.Controls />
         <AllOrdersPageWindow>
           <MultiView.View viewIndex={1}>
-            <MyOrdersView />
+            <MyOrdersView orders={orders} />
           </MultiView.View>
           <MultiView.View viewIndex={2}>
             <SketchesView />

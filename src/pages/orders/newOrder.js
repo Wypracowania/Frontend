@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ADD_ORDER_URL } from 'globalVariables';
 import Headline from 'components/Header/Headline';
@@ -34,27 +34,29 @@ const ResetButton = styled(HeadButton)`
 const NewOrder = () => {
   useEffect(() => {});
 
-  const document = useRef(null);
-  const category = useRef(null);
-  const topic = useRef(null);
-  const pages = useRef(null);
-  const deadline = useRef(null);
-  const instructions = 'XXXXXXXXXXXX';
+  const initialOrderData = {
+    document: 'ESE',
+    category: 'PRZ',
+    topic: 'Bioinformatyka w biomedycynie',
+    pages: 1,
+    deadline: '2020-10-04',
+    instructions: 'xxxxxxxx',
+  };
+
+  const [orderData, changeOrderData] = useState(initialOrderData);
+
+  const handleChange = (e) => {
+    changeOrderData({ ...orderData, [e.target.name]: e.target.value });
+    console.log(orderData);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = {
-      document: document.current.value,
-      category: category.current.value,
-      topic: topic.current.value,
-      pages: +pages.current.value,
-      deadline: deadline.current.value,
-      instructions,
-    };
+    console.log(orderData);
 
     fetch(ADD_ORDER_URL, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(orderData),
     })
       .then((response) => {
         return response.json();
@@ -67,84 +69,21 @@ const NewOrder = () => {
       });
   };
 
-  const First = () => {
-    return (
-      <>
-        <select name="type" id="type" ref={document}>
-          <option value="WYP">Wypracowanie</option>
-          <option value="ESE">Esej</option>
-        </select>
-        <input type="number" name="pages" id="pages" ref={pages} />
-        <input type="number" name="words" id="words" />
-        <select name="line" id="line">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        <br />
-        <select name="subject" id="subject" placeholder="Wybierz tematykę">
-          <option value="Wybierz tematykę">Wybierz tematykę</option>
-          <option value="Wiersz">Wiersz</option>
-          <option value="Esej">Esej</option>
-          <option value="Wypracowanie">Wypracowanie</option>
-        </select>
-        <select name="grade" id="grade">
-          <option value="High School">Szkoła średnia</option>
-          <option value="Primary School">Podstawówka</option>
-          <option value="Collague">Studia</option>
-        </select>
-        <br />
-        <input
-          type="date"
-          name="deadline"
-          id="deadline"
-          placeholder="Ustaw datę"
-          ref={deadline}
-        />
-        <select name="category" id="category" ref={category}>
-          <option value="PRZ">Nauki przyrodnicze</option>
-          <option value="HUM">Nauki humanistyczne</option>
-          <option value="ŚCI">Nauki ścisłe</option>
-        </select>
-      </>
-    );
-  };
+  // const First = () => {
+  //   return (
+  //     <>
 
-  const Second = () => {
-    return (
-      <>
-        <input
-          type="text"
-          name="topic"
-          id="topic"
-          placeholder="Wpisz temat"
-          ref={topic}
-        />
-        <br />
-        <select name="sources" id="sources">
-          <option value="">Wybierz ilość</option>
-          <option value="Internet">Internet</option>
-          <option value="Wiedza">Wiedza</option>
-          <option value="Książki">Książki</option>
-        </select>
-        <select name="stylistyka" id="stylistyka">
-          <option value="">Wybierz stylistykę</option>
-          <option value="Proza">Proza</option>
-          <option value="Poezja">Poezja</option>
-          <option value="Liryka">Liryka</option>
-        </select>
-        <br />
-        <select name="subject" id="subject" placeholder="Wybierz tematykę">
-          <option value="Wybierz tematykę">Wybierz tematykę</option>
-          <option value="Wiersz">Wiersz</option>
-          <option value="Esej">Esej</option>
-          <option value="Wypracowanie">Wypracowanie</option>
-        </select>
-        <br />
-        <textarea />
-      </>
-    );
-  };
+  //     </>
+  //   );
+  // };
+
+  // const Second = () => {
+  //   return (
+  //     <>
+
+  //     </>
+  //   );
+  // };
 
   return (
     <>
@@ -154,10 +93,113 @@ const NewOrder = () => {
         <StyledNewOrderPageWindow>
           <StyledForm action="#" onSubmit={(e) => handleSubmit(e)}>
             <MultiStepForm.View viewIndex={1}>
-              <First />
+              {/* ------------------------------------------------ */}
+              <select
+                name="document"
+                id="type"
+                onChange={(e) => handleChange(e)}
+              >
+                <option value="WYP">Wypracowanie</option>
+                <option value="ESE">Esej</option>
+              </select>
+              <input
+                type="number"
+                name="pages"
+                id="pages"
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                type="number"
+                name="words"
+                id="words"
+                onChange={(e) => handleChange(e)}
+              />
+              <select name="line" id="line" onChange={(e) => handleChange(e)}>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <br />
+              <select
+                name="subject"
+                id="subject"
+                placeholder="Wybierz tematykę"
+                onChange={(e) => handleChange(e)}
+              >
+                <option value="Wybierz tematykę">Wybierz tematykę</option>
+                <option value="Wiersz">Wiersz</option>
+                <option value="Esej">Esej</option>
+                <option value="Wypracowanie">Wypracowanie</option>
+              </select>
+              <select name="grade" id="grade" onChange={(e) => handleChange(e)}>
+                <option value="High School">Szkoła średnia</option>
+                <option value="Primary School">Podstawówka</option>
+                <option value="Collague">Studia</option>
+              </select>
+              <br />
+              <input
+                type="date"
+                name="deadline"
+                id="deadline"
+                placeholder="Ustaw datę"
+                onChange={(e) => handleChange(e)}
+              />
+              <select
+                name="category"
+                id="category"
+                onChange={(e) => handleChange(e)}
+              >
+                <option value="PRZ">Nauki przyrodnicze</option>
+                <option value="HUM">Nauki humanistyczne</option>
+                <option value="ŚCI">Nauki ścisłe</option>
+              </select>
+              {/* ------------------------------------------------ */}
             </MultiStepForm.View>
             <MultiStepForm.View viewIndex={2}>
-              <Second />
+              {/* ------------------------------------------------ */}
+              <input
+                type="text"
+                name="topic"
+                id="topic"
+                placeholder="Wpisz temat"
+                onChange={(e) => handleChange(e)}
+              />
+              <br />
+              <select
+                name="sources"
+                id="sources"
+                onChange={(e) => handleChange(e)}
+              >
+                <option value="">Wybierz ilość</option>
+                <option value="Internet">Internet</option>
+                <option value="Wiedza">Wiedza</option>
+                <option value="Książki">Książki</option>
+              </select>
+              <select
+                name="stylistyka"
+                id="stylistyka"
+                onChange={(e) => handleChange(e)}
+              >
+                <option value="">Wybierz stylistykę</option>
+                <option value="Proza">Proza</option>
+                <option value="Poezja">Poezja</option>
+                <option value="Liryka">Liryka</option>
+              </select>
+              <br />
+              <select
+                name="subject"
+                id="subject"
+                placeholder="Wybierz tematykę"
+                onChange={(e) => handleChange(e)}
+              >
+                <option value="Wybierz tematykę">Wybierz tematykę</option>
+                <option value="Wiersz">Wiersz</option>
+                <option value="Esej">Esej</option>
+                <option value="Wypracowanie">Wypracowanie</option>
+              </select>
+              <br />
+              <textarea name="instructions" onChange={(e) => handleChange(e)} />
+              {/* ------------------------------------------------ */}
             </MultiStepForm.View>
             <MultiStepForm.View viewIndex={3}>asd</MultiStepForm.View>
             <button type="submit">Zamów</button>

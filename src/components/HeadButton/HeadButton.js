@@ -11,6 +11,11 @@ const HeadButton = styled.button`
   outline: none;
   border: none;
   border-radius: 4px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: inherit;
+  }
 `;
 
 // const HeadButton = ({ children }) => (

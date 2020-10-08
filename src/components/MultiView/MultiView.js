@@ -22,6 +22,7 @@ const StyledNavPageView = styled.nav`
     padding: 0;
     list-style: none;
     border-bottom: solid 1px lightgray;
+    justify-content: space-between;
 
     & > li {
       transform: translateY(2px);
@@ -30,10 +31,6 @@ const StyledNavPageView = styled.nav`
         & button {
           border-bottom: solid 3px ${({ theme }) => theme.primaryDark};
         }
-      }
-
-      &:not(:first-child) {
-        margin-left: 200px;
       }
 
       & > button {

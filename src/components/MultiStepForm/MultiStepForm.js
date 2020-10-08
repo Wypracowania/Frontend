@@ -1,14 +1,21 @@
 import HeadButton from 'components/HeadButton/HeadButton';
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 
 const WizardContext = createContext({
   currentPage: 1,
   changePage: () => {},
+  viewIndexes: [],
+  updateViewIndexes: () => {},
 });
 
 const View = ({ children, viewIndex }) => {
-  const { currentPage } = useContext(WizardContext);
+  const { currentPage, setViewIndexes } = useContext(WizardContext);
+
+  useEffect(() => {
+    setViewIndexes(viewIndex);
+  });
+
   return currentPage === viewIndex ? children : null;
 };
 
@@ -108,34 +115,42 @@ const ProgressBar = () => {
   );
 };
 
-const Controls = () => {
-  const { changePage, currentPage } = useContext(WizardContext);
+const Controls = (props) => {
+  const { changePage, currentPage, viewIndexes } = useContext(WizardContext);
 
   return (
-    <StyledNavForm currentPage={currentPage}>
+    <StyledNavForm currentPage={currentPage} {...props}>
       <HeadButton
-        onClick={() => {
-          changePage(currentPage - 1);
-        }}
+        onClick={() => changePage(currentPage - 1)}
+        disabled={currentPage === 1}
       >
         Poprzedni krok
       </HeadButton>
-      <HeadButton
-        onClick={() => {
-          changePage(currentPage + 1);
-        }}
-      >
-        Kontynuuj
-      </HeadButton>
+
+      {currentPage === viewIndexes.length ? (
+        <HeadButton type="submit">Zamów</HeadButton>
+      ) : (
+        <HeadButton onClick={() => changePage(currentPage + 1)}>
+          Kontynuuj
+        </HeadButton>
+      )}
     </StyledNavForm>
   );
 };
 
 const Wizard = ({ children }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [viewIndexes, updateViewIndexes] = useState([]);
 
   const changePage = (newPageIndex) => {
     setCurrentPage(newPageIndex);
+  };
+
+  const setViewIndexes = (viewIndex) => {
+    if (viewIndexes.includes(viewIndex)) {
+      return;
+    }
+    updateViewIndexes([...viewIndexes, viewIndex]);
   };
 
   return (
@@ -143,6 +158,8 @@ const Wizard = ({ children }) => {
       value={{
         currentPage,
         changePage,
+        viewIndexes,
+        setViewIndexes,
       }}
     >
       {children}
