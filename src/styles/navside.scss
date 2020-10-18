@@ -1,0 +1,16 @@
+$backgroud: white;
+$navlink: #eaefff;
+
+.navside {
+    background-color: $backgroud;
+    height: 100vh;
+    width: 220px;
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .navside_active {
+        background-color: $navlink;
+    }
+    
+}

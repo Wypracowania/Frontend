@@ -19,17 +19,6 @@ export function getCookie(named) {
   const decodedCookie = decodeURIComponent(document.cookie);
   const ca = decodedCookie.split(';');
 
-  // ca.forEach(function (index, i) {
-  //   let c = ca[i];
-  //   while (c.charAt(0) === ' ') {
-  //     c = c.substring(1);
-  //   }
-  //   if (c.indexOf(name) === 0) {
-  //     return c.substring(name.length, c.length);
-  //   }
-  //   return '';
-  // });
-
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
     while (c.charAt(0) === ' ') {
@@ -55,6 +44,10 @@ export function userHaveSession() {
     //  jeżeli === "" to znaczy że ciasteczko nie ma informacji na temat użytkownika
     return false;
   }
+  return true;
+}
 
-  return false;
+export function getUsername() {
+  const username = getCookie('username');
+  return username
 }
