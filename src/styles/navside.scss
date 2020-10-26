@@ -12,16 +12,17 @@
         height: 100vh;
         display: flex;
         flex-direction: column;
+        padding-left: 10px;
     }
 
     .navside__link{
         color: #2E384D;
         text-decoration: none;
         position: relative;
-        padding: 20px;
+        padding: 18px;
         box-sizing: content-box;
         transition: .1s ease-in;
-        border-left: 2px solid transparent;
+        border-left: 3px solid transparent;
         span{
             svg{
                 width: 18px;
@@ -42,9 +43,9 @@
         }
     }
 
-    .navside_active {
+    .navside-active {
         background-color: $navLinksColor;
-        border-left: 2px solid #676C7D;
+        border-left: 3px solid #676C7D;
     }
 
 }

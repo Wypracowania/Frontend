@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ADD_ORDER_URL } from 'globalVariables';
 import { getUsername } from 'authentication';
 import { Redirect } from 'react-router-dom'
+import Navside from 'components/Navside';
 
 const NewOrder = () => {
   // Username for relation in database
@@ -40,6 +41,7 @@ const NewOrder = () => {
   };
   return (
       <>
+      <Navside />
       <form onClick={ e => handleSubmit(e) } >
         <select onChange={(e) => handleChange(e)} name="document" id="type" >
           <option value="WYP">Wypracowanie</option>
