@@ -1,16 +1,50 @@
-$backgroud: white;
-$navlink: #eaefff;
+//Imports
+
+@import "./variables.scss";
+
+//Navside styles
 
 .navside {
-    background-color: $backgroud;
+    background-color: $background;
     height: 100vh;
-    width: 220px;
+
     ul {
+        height: 100vh;
         display: flex;
         flex-direction: column;
     }
-    .navside_active {
-        background-color: $navlink;
+
+    .navside__link{
+        color: #2E384D;
+        text-decoration: none;
+        position: relative;
+        padding: 20px;
+        box-sizing: content-box;
+        transition: .1s ease-in;
+        border-left: 2px solid transparent;
+        span{
+            svg{
+                width: 18px;
+                height: 18px;
+                margin: 0;
+                padding: 0;
+                margin-right: 20px;
+                color: #BFC5D2;
+            }
+        }
+        &:nth-last-child(1){
+            position: absolute;
+            bottom: 0;
+        }
+        &:hover{
+            background-color: $navLinksColor;
+            border-color: #676C7D;
+        }
     }
-    
+
+    .navside_active {
+        background-color: $navLinksColor;
+        border-left: 2px solid #676C7D;
+    }
+
 }
