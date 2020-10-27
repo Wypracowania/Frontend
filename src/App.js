@@ -7,6 +7,7 @@ import OrderDetails from 'pages/orders/OrderDetails'
 import './styles/global.css'
 import './styles/app.scss'
 import Login from 'pages/authentication/login';
+import Registration from 'pages/registration';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/page-one" component={ PageOne } />
             <Route path="/newOrder" component={ NewOrder } />
             <Route path="/allOrders" component={ AllOrders } />
+            <Route path="/registration" component={ Registration } />
           </Switch>
         </div>
       </BrowserRouter>
