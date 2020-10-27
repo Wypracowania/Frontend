@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import AuthenticationWrapper from '../authentication/Authentication';
 import Navside from 'components/Navside';
 import { useParams } from 'react-router-dom'
 import { ORDER_DETAIL_URL } from 'globalVariables';
+import AuthenticationWrapper from '../authentication/Authentication.js'
 
 const OrderDetails = () => {
     // Param from url
-    let { id } = useParams();
+    const { id } = useParams();
     const [order, getOrderDetail] = useState(null)
     
     useEffect(()=>{
-        const url = ORDER_DETAIL_URL + `${id}/`
+        const url = `${ORDER_DETAIL_URL  }${id}/`
         fetch(url)
         .then(res => res.json())
         .then(res => {

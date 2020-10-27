@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FETCH_ORDERS_URL } from 'globalVariables';
 import { Link, Route, BrowserRouter, Switch, NavLink } from 'react-router-dom';
-import AuthenticationWrapper from '../authentication/Authentication';
 import Navside from 'components/Navside';
+import AuthenticationWrapper from '../authentication/Authentication';
 
 const AllOrders = () => {
   const [orders, setOrders] = useState([]);
