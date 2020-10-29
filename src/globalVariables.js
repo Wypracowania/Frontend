@@ -1,5 +1,5 @@
 export const LOGIN_URL = 'https://wypracowania.herokuapp.com/login';
-export const REGISTER_URL = 'https://wypracowania.herokuapp.com/rejestracja';
+export const REGISTER_URL = 'http://wypracowania.herokuapp.com/rejestracja';
 export const ADD_ORDER_URL = 'http://localhost:8000/api/user/nowe-zamowienie';
 
 // WSZYSTKIE ZAMOWIENIA
