@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import AuthenticationWrapper from '../authentication/Authentication';
-import Navside from 'components/Navside';
 import { useParams } from 'react-router-dom'
 import { ORDER_DETAIL_URL } from 'globalVariables';
 
@@ -14,7 +13,6 @@ const OrderDetails = () => {
         fetch(url)
         .then(res => res.json())
         .then(res => {
-            console.log(res)
             getOrderDetail(res)
         })
         .catch(err => 
@@ -22,7 +20,6 @@ const OrderDetails = () => {
         )}, [])
   return (
     <AuthenticationWrapper>
-      <Navside />
         <div>Order Detail</div>
         { order ? 
         <div>Temat: { order.topic } Deadline: { order.deadline }</div>

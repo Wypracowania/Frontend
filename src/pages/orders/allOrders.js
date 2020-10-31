@@ -24,7 +24,6 @@ const AllOrders = () => {
 
   return (
     <AuthenticationWrapper>
-      <Navside />
       <div>ALL ORDERS</div>
     </AuthenticationWrapper>
   );
