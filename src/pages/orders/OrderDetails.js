@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import AuthenticationWrapper from '../authentication/Authentication';
 import { useParams } from 'react-router-dom'
 import { ORDER_DETAIL_URL } from 'globalVariables';
-import AuthenticationWrapper from '../authentication/Authentication.js'
+import AuthenticationWrapper from '../authentication/Authentication';
 
 const OrderDetails = () => {
     // Param from url
