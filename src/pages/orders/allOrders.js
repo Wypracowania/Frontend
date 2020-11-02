@@ -1,35 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { FETCH_ORDERS_URL } from 'globalVariables';
 import { Link, Route, BrowserRouter, Switch, NavLink } from 'react-router-dom';
-import Navside from 'components/Navside';
 import AuthenticationWrapper from '../authentication/Authentication';
-import { getUsername } from '../../authentication'
 
 const AllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const username = getUsername()
-    const url = `${FETCH_ORDERS_URL}` + `${username}`
-
-    fetch(url, {})
-      .then(response => {
-        return response.json()
+    fetch(FETCH_ORDERS_URL,{
+      Allow: 'OPTIONS',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        return response.json();
       })
-      .then(response => {
-        console.log(response)
-        setOrders(response)
-      })
-      .catch(err => {
-        console.log(err)
+      .then((response) => {
+        setOrders(response);
       })
   }, [])
 
 
   return (
     <AuthenticationWrapper>
-      <Navside />
-      <div>ALL ORDERS</div>
+      <div>
+{console.log(orders)}
+      {orders.map(order => (
+        <div>
+        <p>{order.topic}</p>
+        <p>{order.deadline}</p>
+        </div>
+      ))}
+      </div>
     </AuthenticationWrapper>
   );
 };

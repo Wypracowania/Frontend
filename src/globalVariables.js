@@ -1,9 +1,9 @@
 export const LOGIN_URL = 'https://wypracowania.herokuapp.com/login';
-export const REGISTER_URL = 'https://wypracowania.herokuapp.com/rejestracja';
-export const ADD_ORDER_URL = 'http://localhost:8000/api/user/nowe-zamowienie';
+export const REGISTER_URL = 'http://wypracowania.herokuapp.com/rejestracja';
+export const ADD_ORDER_URL = 'https://wypracowania.herokuapp.com/api/user/nowe-zamowienie';
 
 // WSZYSTKIE ZAMOWIENIA
-export const FETCH_ORDERS_URL = 'https://wypracowania.herokuapp.com/api/user/all';
+export const FETCH_ORDERS_URL = 'https://wypracowania.herokuapp.com/api/user/all/';
 
 // https://wypracowania.herokuapp.com/api/user/order/<id> NIE ZAPOMNIEC O ID ZAMOWIENIA
 export const ORDER_DETAIL_URL = 'https://wypracowania.herokuapp.com/api/user/order/';
