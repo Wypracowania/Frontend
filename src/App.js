@@ -4,7 +4,7 @@ import PageOne from './pages/examplePage';
 import NewOrder from 'pages/orders/newOrder';
 import AllOrders from 'pages/orders/allOrders';
 import OrderDetails from 'pages/orders/OrderDetails'
-import './styles/global.css'
+import './styles/global.scss'
 import './styles/app.scss'
 import Login from 'pages/authentication/login';
 import Registration from 'pages/registration';

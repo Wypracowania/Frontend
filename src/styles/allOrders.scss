@@ -1,0 +1,22 @@
+// IMPORTS
+
+@import "./variables.scss";
+
+//ALL ORDERS STYLES
+
+.allOrders__title{    
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -2px;
+}
+
+.allOrders__newOrderLink{
+    font-family: Work Sans;
+    padding: 6px;
+    background-color: #0078CE;
+}
