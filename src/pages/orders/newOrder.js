@@ -29,7 +29,7 @@ const NewOrder = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(orderData),
-    }, console.log(orderData))
+    })
     .then((response) => {
       return response.json();
     })
