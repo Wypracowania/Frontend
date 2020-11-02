@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { LOGIN_URL } from '../../globalVariables';
-import { setUserCookie, setTokenCookie } from '../../authentication';
+import { setUserCookie, setTokenCookie, loginUser, userHaveSession } from '../../authentication';
 // Funkcja służy do przechowywania ciasteczka/sesji z tokenem
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLogged, changeLoginStatus] = useState(false);
+
+  useEffect(()=>{
+    if(userHaveSession()) {
+      changeLoginStatus(true)
+    }
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,13 +30,12 @@ function Login() {
         'Content-Type': 'application/json',
       },
     })
-      .then((res) => res.json())
-      .then((token) => {
-        setTokenCookie(token);
-        setUserCookie(username);
-        changeLoginStatus(true); //aby przekierować
-      }) //Jeżeli uda się zalogować zapisujemy token
-      .catch((err) => console.log(err));
+    .then(res => res.json())
+    .then(token => {
+      loginUser(token, username)
+      changeLoginStatus(true); // aby przekierować
+    }) // Jeżeli uda się zalogować zapisujemy token
+    .catch((err) => console.log(err));
   };
 
   return (

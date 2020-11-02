@@ -4,22 +4,28 @@
 
 export function setTokenCookie(token) {
   const d = new Date();
-  d.setTime(d.getTime() + 1000000);
+  d.setTime(d.getTime() + 100000);
   const expires = `expires=${d.toUTCString()}`;
   document.cookie = `token=${token}; ${expires};`;
 }
 export function setUserCookie(username) {
   const d = new Date();
-  d.setTime(d.getTime() + 1000000);
+  d.setTime(d.getTime() + 100000);
   const expires = `expires=${d.toUTCString()}`;
   document.cookie = `username=${username}; ${expires};`;
 }
+
+export function loginUser(token, username) {
+  setTokenCookie(token)
+  setUserCookie(username)
+}
+
 export function getCookie(named) {
   const name = `${named}=`;
   const decodedCookie = decodeURIComponent(document.cookie);
   const ca = decodedCookie.split(';');
 
-  for (let i = 0; i < ca.length; i++) {
+  for (let i = 0; i < ca.length; i+=1) {
     let c = ca[i];
     while (c.charAt(0) === ' ') {
       c = c.substring(1);

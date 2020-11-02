@@ -20,10 +20,7 @@ const AllOrders = () => {
       .then((response) => {
         setOrders(response);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  }, [])
 
 
   return (
