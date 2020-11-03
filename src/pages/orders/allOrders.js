@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FETCH_ORDERS_URL } from 'globalVariables';
+import { NavLink } from 'react-router-dom';
 import AuthenticationWrapper from '../authentication/Authentication';
-
+import "../../styles/allOrders.scss";
 
 const AllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-
     fetch(FETCH_ORDERS_URL,{
       Allow: 'OPTIONS',
       method: 'GET',
@@ -21,12 +21,21 @@ const AllOrders = () => {
       .then((response) => {
         setOrders(response);
       })
-  }, [orders])
+  }, [])
 
 
   return (
     <AuthenticationWrapper>
-      <div>
+      <div className="allOrders">
+        <div>
+        <h2 className="allOrders__title">Moje zamówienia</h2>
+        <div className="allOrders__newOrderLink">
+          <NavLink to="/noweZamowienie" className="navside__link">
+          <span>+</span>
+          <span>Nowe zamówienie</span>
+          </NavLink>
+        </div>
+        </div>
       {orders.map(order => (
         <div>
         <p>{order.topic}</p>

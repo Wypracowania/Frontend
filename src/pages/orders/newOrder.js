@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ADD_ORDER_URL } from 'globalVariables';
 import { getUsername } from 'authentication';
 import { Redirect } from 'react-router-dom'
-import { useDispatch, useSelector, connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import "../../styles/newOrder.scss";
 
 
 // Przykład użycia redux dla jednego komponentu, do drugiego musisz nieco pozmieniać nazwy ;)
@@ -15,8 +16,15 @@ const firstStepDataUpload = ( data ) => ({
 });
 
 
-const NewOrder = () => {
 
+
+const NewOrder = () => {
+  const firstStepData = useSelector(
+    state => state.firstStep
+  );
+
+// Aby zmienić stan globalny, użyj dispatch(firstStepDataUpload)
+const dispatch = useDispatch()
   // Username for relation in database
   const initialOrder = {
     username: getUsername()
@@ -28,14 +36,8 @@ const NewOrder = () => {
   // returned in response when created
   const [id, setID] = useState(null);
 
-// Tutaj możesz odczytać co masz w globalnym stanie (poprzez użycie tej funkcji)
-  const firstStepData = useSelector(
-    state => state.firstStep
-  );
 
-  // Aby zmienić stan globalny, użyj dispatch(firstStepDataUpload)
-  const dispatch = useDispatch()
-
+  
   useEffect(() =>{
 
     if(isSubmited === false){
@@ -74,62 +76,78 @@ const NewOrder = () => {
   }, [isSubmited])
 
   return (
-      <div>
-      <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)} } >
-        <select onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}} name="document" id="type" >
-          <option value="WYP">Wypracowanie</option>
-          <option value="ESE">Esej</option>
-        </select>
-        <input
-          type="number"
-          name="pages"
-          id="pages"
-          onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-        />
-        <br />
-        <input
-          type="date"
-          name="deadline"
-          id="deadline"
-          placeholder="Ustaw datę"
-          onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-        />
-        <select
-          name="category"
-          id="category"
-          onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-        >
-          <option value="PRZ">Nauki przyrodnicze</option>
-          <option value="HUM">Nauki humanistyczne</option>
-          <option value="ŚCI">Nauki ścisłe</option>
-        </select>
-        <input
-          type="text"
-          name="topic"
-          id="topic"
-          placeholder="Wpisz temat"
-          onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-        />
-        <br />
-        <select
-          name="subject"
-          id="subject"
-          placeholder="Wybierz tematykę"
-          onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-        >
-          <option value="Wybierz tematykę">Wybierz tematykę</option>
-          <option value="Wiersz">Wiersz</option>
-          <option value="Esej">Esej</option>
-          <option value="Wypracowanie">Wypracowanie</option>
-        </select>
-        <br />
-        <textarea name="instructions" rows="10" cols="50" onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}} />
-        <button type="submit">Zamów</button>
-      </form>
-      {/* Sledzenie zamówienia po jego utworzeniu. Etap licytacji */}
-      { isCreated ? <Redirect to={`/zamowienie/${id}`} /> : null } 
-    </div>
-  );
+    <div className="newOrder">
+    <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)} } >
+    <label for="type" className="newOrder__form-label">Typ:</label>
+    <div class="form-element">
+      <select className="newOrder__select" onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}} name="document" id="type" >
+        <option value="WYP">Wypracowanie</option>
+        <option value="ESE">Esej</option>
+      </select>
+      </div>
+      <label className="newOrder__form-label" for="pages">Ilość stron:</label>
+      <input
+        className="form-element"
+        type="number"
+        name="pages"
+        id="pages"
+        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
+      />
+      <br />
+      <label className="newOrder__form-label" for="deadline">Deadline:</label>
+      <input
+        className="form-element"
+        type="date"
+        name="deadline"
+        id="deadline"
+        placeholder="Ustaw datę"
+        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
+      />
+      <label className="newOrder__form-label" for="category">Kategoria:</label>
+      <div class="form-element">
+      <select
+        name="category"
+        id="category"
+        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
+      >
+        <option value="PRZ">Nauki przyrodnicze</option>
+        <option value="HUM">Nauki humanistyczne</option>
+        <option value="ŚCI">Nauki ścisłe</option>
+      </select>
+      </div>
+      <label className="newOrder__form-label" for="topic">Temat:</label>
+      <input
+        className="form-element"
+        type="text"
+        name="topic"
+        id="topic"
+        placeholder="Wpisz temat"
+        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
+      />
+      <br />
+      <label className="newOrder__form-label" for="subject">Tematyka:</label>
+      <div class="form-element">
+      <select
+        name="subject"
+        id="subject"
+        placeholder="Wybierz tematykę"
+        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
+      >
+        <option value="Wybierz tematykę">Wybierz tematykę</option>
+        <option value="Wiersz">Wiersz</option>
+        <option value="Esej">Esej</option>
+        <option value="Wypracowanie">Wypracowanie</option>
+      </select>
+      </div>
+      <br />
+      <label className="newOrder__form-label" for="instructions">Instrukcje:</label>
+      <textarea className="form-element" name="instructions" rows="10" cols="50" onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}} />
+      <button type="submit">Zamów</button>
+    </form>
+    {/* Sledzenie zamówienia po jego utworzeniu. Etap licytacji */}
+    { isCreated ? <Redirect to={`/zamowienie/${id}`} /> : null } 
+  </div>
+);
 };
 
-export default NewOrder
+export default NewOrder;
