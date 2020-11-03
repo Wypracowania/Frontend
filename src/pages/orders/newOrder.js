@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ADD_ORDER_URL } from 'globalVariables';
 import { getUsername } from 'authentication';
 import { Redirect } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, connect } from 'react-redux'
 
 
 // Przykład użycia redux dla jednego komponentu, do drugiego musisz nieco pozmieniać nazwy ;)
@@ -13,15 +13,6 @@ const firstStepDataUpload = ( data ) => ({
   payload: data
   // 
 });
-
-// Tutaj możesz odczytać co masz w globalnym stanie (poprzez użycie tej funkcji)
-  const firstStepData = useSelector(
-    state => state.firstStep
-  );
-
-// Aby zmienić stan globalny, użyj dispatch(firstStepDataUpload)
-const dispatch = useDispatch()
-
 
 
 const NewOrder = () => {
@@ -37,8 +28,14 @@ const NewOrder = () => {
   // returned in response when created
   const [id, setID] = useState(null);
 
+// Tutaj możesz odczytać co masz w globalnym stanie (poprzez użycie tej funkcji)
+  const firstStepData = useSelector(
+    state => state.firstStep
+  );
 
-  
+  // Aby zmienić stan globalny, użyj dispatch(firstStepDataUpload)
+  const dispatch = useDispatch()
+
   useEffect(() =>{
 
     if(isSubmited === false){
