@@ -1,23 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { ADD_ORDER_URL } from 'globalVariables';
 import { getUsername } from 'authentication';
-import { Redirect } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import "../../styles/newOrder.scss";
+import { Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Steps from './steps';
 import FirstStep from './firstStep';
 import SecondStep from './secondStep';
-
-
-// Przykład użycia redux dla jednego komponentu, do drugiego musisz nieco pozmieniać nazwy ;)
-
-const firstStepDataUpload = ( data ) => ({ 
-  type: "FIRST_STEP_SUCCESS",
-  // Tutaj przekazujesz obiekt danych z zamówienia (etapu 1)
-  payload: data
-  // 
-});
-
+import "../../styles/newOrder.scss";
 
 
 
@@ -25,9 +14,13 @@ const NewOrder = () => {
   const firstStepData = useSelector(
     state => state.firstStep
   );
+  const secondStepData = useSelector(
+    state => state.secondStep
+  );
+  
 
-// Aby zmienić stan globalny, użyj dispatch(firstStepDataUpload)
-const dispatch = useDispatch()
+  let data = {}
+  Object.assign(data, firstStepData, secondStepData)
   // Username for relation in database
   const initialOrder = {
     username: getUsername()
@@ -42,19 +35,11 @@ const dispatch = useDispatch()
 
   
   useEffect(() =>{
-
-    console.log(orderData)
     if(isSubmited === false){
       return;
     }
 
-    // ------------------------ PRZYKŁAD UŻYCIA ---------------------------
-    // Zmieniamy stan
-    dispatch(firstStepDataUpload(orderData)) 
-    // Odczytujemy zmiany
-    console.log(firstStepData)
-    // ------------------------ PRZYKŁAD UŻYCIA ---------------------------
-
+    console.log(orderData)
 
     fetch(ADD_ORDER_URL, {
       method: 'POST',
@@ -84,7 +69,9 @@ const dispatch = useDispatch()
     <Steps />
     <div>
     <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)} } >
-      <FirstStep />
+      <FirstStep/>
+      <SecondStep />
+      <button onClick={() =>{changeOrderData({...orderData, ...data})}}>COXD</button>
     </form>
     {/* Sledzenie zamówienia po jego utworzeniu. Etap licytacji */}
     { isCreated ? <Redirect to={`/zamowienie/${id}`} /> : null } 

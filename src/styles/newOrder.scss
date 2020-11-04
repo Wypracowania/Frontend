@@ -1,49 +1,67 @@
+.newOrder__select {
+  background: rgba(224, 231, 255, 0.2);
+  border: 1px solid #EAEFFF;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
 
-.newOrder__select{
-    background: rgba(224, 231, 255, 0.2);
-    border: 1px solid #EAEFFF;
-    box-sizing: border-box;
-    border-radius: 5px;
-    }
-    
-    .newOrder__form-label{
-        font-family: Work Sans;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 18px;
-        line-height: 32px;
-        color: #2E384D;
-    }
-    
-    
-    // GLOBAL SELECT CONTAINERS
-    .form-element {
-        font-family: Work Sans;
-        padding: 10px;
-        border: 1px solid #EAEFFF;
-        position: relative;
-        border-radius: 5px;
-        background: rgba(224, 231, 255, 0.2);
-      }
-      .form-element select {
-        width: 100%;
-        border: 0;
-        font-size: 16px;
-        background: transparent;
-        outline: none;
-        -webkit-appearance: none;
-           -moz-appearance: none;
-                appearance: none;
-      }
-      .form-element:after {
-        content: 'keyboard_arrow_down';
-        font-family: 'material icons';
-        font-size: 24px;
-        color: #666;
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-      }
-    
+.newOrder__form-label {
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 32px;
+  color: #2E384D;
+}
+
+
+// GLOBAL SELECT CONTAINERS
+.form-element {
+  font-family: Work Sans;
+  padding: 10px;
+  border: 1px solid #EAEFFF;
+  position: relative;
+  border-radius: 5px;
+  background: rgba(224, 231, 255, 0.2);
+}
+
+.form-element select {
+  width: 100%;
+  border: 0;
+  font-size: 16px;
+  background: transparent;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-element:after {
+  content: 'keyboard_arrow_down';
+  font-family: 'material icons';
+  font-size: 24px;
+  color: #666;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.button {
+  background-color: #DADADA;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  transition: .2s ease-in;
+  border-bottom: 2px solid darken(#DADADA, 5%);
+  &:hover{
+    transform: translateY(1px);
+  }
+}
+
+.next-step{
+  background-color: #0078CE;
+  color: #fff;
+  border-color: darken(#0078CE, 5%);;
+}
