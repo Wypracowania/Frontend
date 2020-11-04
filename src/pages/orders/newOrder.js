@@ -4,6 +4,9 @@ import { getUsername } from 'authentication';
 import { Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import "../../styles/newOrder.scss";
+import Steps from './steps';
+import FirstStep from './firstStep';
+import SecondStep from './secondStep';
 
 
 // Przykład użycia redux dla jednego komponentu, do drugiego musisz nieco pozmieniać nazwy ;)
@@ -40,6 +43,7 @@ const dispatch = useDispatch()
   
   useEffect(() =>{
 
+    console.log(orderData)
     if(isSubmited === false){
       return;
     }
@@ -77,75 +81,14 @@ const dispatch = useDispatch()
 
   return (
     <div className="newOrder">
+    <Steps />
+    <div>
     <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)} } >
-    <label for="type" className="newOrder__form-label">Typ:</label>
-    <div class="form-element">
-      <select className="newOrder__select" onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}} name="document" id="type" >
-        <option value="WYP">Wypracowanie</option>
-        <option value="ESE">Esej</option>
-      </select>
-      </div>
-      <label className="newOrder__form-label" for="pages">Ilość stron:</label>
-      <input
-        className="form-element"
-        type="number"
-        name="pages"
-        id="pages"
-        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-      />
-      <br />
-      <label className="newOrder__form-label" for="deadline">Deadline:</label>
-      <input
-        className="form-element"
-        type="date"
-        name="deadline"
-        id="deadline"
-        placeholder="Ustaw datę"
-        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-      />
-      <label className="newOrder__form-label" for="category">Kategoria:</label>
-      <div class="form-element">
-      <select
-        name="category"
-        id="category"
-        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-      >
-        <option value="PRZ">Nauki przyrodnicze</option>
-        <option value="HUM">Nauki humanistyczne</option>
-        <option value="ŚCI">Nauki ścisłe</option>
-      </select>
-      </div>
-      <label className="newOrder__form-label" for="topic">Temat:</label>
-      <input
-        className="form-element"
-        type="text"
-        name="topic"
-        id="topic"
-        placeholder="Wpisz temat"
-        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-      />
-      <br />
-      <label className="newOrder__form-label" for="subject">Tematyka:</label>
-      <div class="form-element">
-      <select
-        name="subject"
-        id="subject"
-        placeholder="Wybierz tematykę"
-        onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}}
-      >
-        <option value="Wybierz tematykę">Wybierz tematykę</option>
-        <option value="Wiersz">Wiersz</option>
-        <option value="Esej">Esej</option>
-        <option value="Wypracowanie">Wypracowanie</option>
-      </select>
-      </div>
-      <br />
-      <label className="newOrder__form-label" for="instructions">Instrukcje:</label>
-      <textarea className="form-element" name="instructions" rows="10" cols="50" onChange={(e) => {changeOrderData({ ...orderData, [e.target.name]: e.target.value })}} />
-      <button type="submit">Zamów</button>
+      <FirstStep />
     </form>
     {/* Sledzenie zamówienia po jego utworzeniu. Etap licytacji */}
     { isCreated ? <Redirect to={`/zamowienie/${id}`} /> : null } 
+    </div>
   </div>
 );
 };

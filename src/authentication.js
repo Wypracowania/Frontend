@@ -4,13 +4,13 @@
 
 export function setTokenCookie(token) {
   const d = new Date();
-  d.setTime(d.getTime() + 100000);
+  d.setTime(d.getTime() + 1000000);
   const expires = `expires=${d.toUTCString()}`;
   document.cookie = `token=${token}; ${expires};`;
 }
 export function setUserCookie(username) {
   const d = new Date();
-  d.setTime(d.getTime() + 100000);
+  d.setTime(d.getTime() + 1000000);
   const expires = `expires=${d.toUTCString()}`;
   document.cookie = `username=${username}; ${expires};`;
 }
