@@ -25,7 +25,6 @@ const FirstStep = () =>{
   });
 
   useEffect(() =>{
-    console.log(firstStepData)
     dispatch(firstStepDataUpload(firstStepData));
     dispatch(firstStepVisible(isVisible));
     if(isVisible === false){

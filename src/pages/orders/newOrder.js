@@ -29,6 +29,7 @@ const NewOrder = () => {
     state => state.secondStepVisible
   );
 
+
   // Here the merged state of the two components will be stored
   let data = {};
   // Username for relation in database
@@ -45,7 +46,6 @@ const NewOrder = () => {
   // returned in response when created
   const [id, setID] = useState(null);
 
-  
   useEffect(() =>{
     if(isSubmited === false){
       return;
@@ -78,7 +78,8 @@ const NewOrder = () => {
   return (
     <AuthenticationWrapper>
       <div className="newOrder">
-      <Steps />
+      {firstStepVisible ? <Steps display="first" /> : ""}
+      {secondStepVisible ? <Steps display="second" /> : ""}
         <div className="newOrder-box">
           <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)}}>
             {firstStepVisible ? <FirstStep/> : ""}

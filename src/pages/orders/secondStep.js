@@ -25,10 +25,10 @@ const SecondStep = () => {
     payload: bool
   })
 
+
   useEffect(() =>{
     dispatch(secondStepDataUpload(secondStepData));
     dispatch(secondStepVisible(isVisible));
-
   }, [isVisible])
 
   useEffect(() =>{
@@ -70,7 +70,7 @@ const SecondStep = () => {
       onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}} />
       <div className="second-step__buttons">
         <button type="button" className="button">Anuluj</button>
-        <button type="button" className="button" onClick={() => {changeFirstVisibility(true)}}>Poprzedni etap</button>
+        <button type="button" className="button" onClick={() => {changeFirstVisibility(true); changeVisibility(false)}}>Poprzedni etap</button>
         <button type="button" className="button next-step" onClick={() => {changeSubmit(true); changeVisibility(false)}}>Przejdź dalej</button>
       </div>
     </div>
