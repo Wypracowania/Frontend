@@ -4,6 +4,7 @@ import { getUsername } from 'authentication';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Steps from './steps';
+import AuthenticationWrapper from '../authentication/Authentication';
 import FirstStep from './firstStep';
 import SecondStep from './secondStep';
 import "../../styles/newOrder.scss";
@@ -75,17 +76,20 @@ const NewOrder = () => {
   }, [isSubmited])
 
   return (
-    <div className="newOrder">
-    <Steps />
-      <div className="newOrder-box">
-        <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)}}>
-          {firstStepVisible ? <FirstStep/> : <SecondStep />}
-          <button className="button" onClick={() =>{changeOrderData({...orderData, ...data})}}>Złóż zamówienie</button>
-        </form>
-    {/* Sledzenie zamówienia po jego utworzeniu. Etap licytacji */}
-    { isCreated ? <Redirect to={`/zamowienie/${id}`} /> : null } 
+    <AuthenticationWrapper>
+      <div className="newOrder">
+      <Steps />
+        <div className="newOrder-box">
+          <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)}}>
+            {firstStepVisible ? <FirstStep/> : ""}
+            {secondStepVisible ? <SecondStep /> : ""}
+            <button className="button" onClick={() =>{changeOrderData({...orderData, ...data})}}>Złóż zamówienie</button>
+          </form>
+      {/* Sledzenie zamówienia po jego utworzeniu. Etap licytacji */}
+      { isCreated ? <Redirect to={`/zamowienie/${id}`} /> : null } 
+      </div>
     </div>
-  </div>
+  </AuthenticationWrapper>
   );
 };
 

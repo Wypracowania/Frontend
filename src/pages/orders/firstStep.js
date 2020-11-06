@@ -5,7 +5,7 @@ import "../../styles/firstStep.scss";
 const FirstStep = () =>{
 
   const [firstStepData, setData] = useState({});
-  const [isSubitted, changeSubmit] = useState(false);
+  const [isSubmitted, changeSubmit] = useState(false);
   const [isVisible, changeVisibility] = useState(true);
   const dispatch = useDispatch();
 
@@ -17,12 +17,21 @@ const FirstStep = () =>{
   const firstStepVisible = (bool) => ({
     type: "FIRST_STEP_VISIBLE",
     payload: bool
-  })
+  });
+
+  const secondStepVisible = (bool) => ({
+    type: "SECOND_STEP_VISIBLE",
+    payload: bool
+  });
 
   useEffect(() =>{
+    console.log(firstStepData)
     dispatch(firstStepDataUpload(firstStepData));
     dispatch(firstStepVisible(isVisible));
-  }, [isSubitted])
+    if(isVisible === false){
+      dispatch(secondStepVisible(true));
+    }
+  })
 
   return(
       <div className="first-step">
