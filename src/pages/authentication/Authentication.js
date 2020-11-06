@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { deleteSession, userHaveSession } from '../../authentication';
 
-const AuthenticationWrapper = (children) => {
+const AuthenticationWrapper = ({ children }) => {
     const [isLogged, Login] = useState(true)
 
     const logout = () => {
@@ -18,7 +18,8 @@ const AuthenticationWrapper = (children) => {
     })
     return (
         <>
-            { isLogged ? children : <Redirect to="/login" /> }
+            { isLogged ? null : <Redirect to="/login" /> }
+            { children }
         </>
     )
 }
