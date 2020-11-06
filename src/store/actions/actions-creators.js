@@ -12,3 +12,10 @@ export function secondStepData(data) {
         payload: data
     }
 }
+
+export function firstStepVisible(bool) {
+    return {
+        type: 'FIRST_STEP_VISIBLE',
+        payload: bool
+    }
+}

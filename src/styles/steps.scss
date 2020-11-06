@@ -2,7 +2,9 @@
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    margin-left: 30px;
     position: relative;
+    width: 700px;
     &::before{
         content: "";
         width: 100%;
@@ -11,8 +13,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: #0078CE;
-        z-index: -1;
+        background-color: #979797;
+        z-index: 0;
     }
 }
 
@@ -36,7 +38,10 @@
 }
 
 .steps-description{
+    width: 730px;
     padding-top: 20px;
     display: flex;
+    margin-left: 30px;
     justify-content: space-between;
+    text-align: center;
 }

@@ -11,20 +11,32 @@ import "../../styles/newOrder.scss";
 
 
 const NewOrder = () => {
+
+  // setting state from Redux
   const firstStepData = useSelector(
     state => state.firstStep
   );
   const secondStepData = useSelector(
     state => state.secondStep
   );
-  
 
-  let data = {}
-  Object.assign(data, firstStepData, secondStepData)
+  const firstStepVisible = useSelector(
+    state => state.firstStepVisible
+  );
+
+  const secondStepVisible = useSelector(
+    state => state.secondStepVisible
+  );
+
+  // Here the merged state of the two components will be stored
+  let data = {};
   // Username for relation in database
   const initialOrder = {
     username: getUsername()
   }
+
+  // merge two states into one object
+  Object.assign(data, firstStepData, secondStepData);
 
   const [orderData, changeOrderData] = useState(initialOrder);
   const [isCreated, created] = useState(false);
@@ -32,13 +44,11 @@ const NewOrder = () => {
   // returned in response when created
   const [id, setID] = useState(null);
 
-
   
   useEffect(() =>{
     if(isSubmited === false){
       return;
     }
-
     console.log(orderData)
 
     fetch(ADD_ORDER_URL, {
@@ -67,17 +77,16 @@ const NewOrder = () => {
   return (
     <div className="newOrder">
     <Steps />
-    <div>
-    <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)} } >
-      <FirstStep/>
-      <SecondStep />
-      <button onClick={() =>{changeOrderData({...orderData, ...data})}}>COXD</button>
-    </form>
+      <div className="newOrder-box">
+        <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)}}>
+          {firstStepVisible ? <FirstStep/> : <SecondStep />}
+          <button className="button" onClick={() =>{changeOrderData({...orderData, ...data})}}>Złóż zamówienie</button>
+        </form>
     {/* Sledzenie zamówienia po jego utworzeniu. Etap licytacji */}
     { isCreated ? <Redirect to={`/zamowienie/${id}`} /> : null } 
     </div>
   </div>
-);
+  );
 };
 
 export default NewOrder;

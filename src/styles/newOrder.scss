@@ -1,3 +1,9 @@
+.newOrder{
+  background-color: #F8FAFB;
+  width: 100%;
+}
+
+
 .newOrder__select {
   background: rgba(224, 231, 255, 0.2);
   border: 1px solid #EAEFFF;
@@ -19,6 +25,7 @@
 .form-element {
   font-family: Work Sans;
   padding: 10px;
+  margin: 5px;
   border: 1px solid #EAEFFF;
   position: relative;
   border-radius: 5px;
@@ -53,6 +60,8 @@
   border: none;
   border-radius: 4px;
   padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   transition: .2s ease-in;
   border-bottom: 2px solid darken(#DADADA, 5%);
   &:hover{
@@ -64,4 +73,9 @@
   background-color: #0078CE;
   color: #fff;
   border-color: darken(#0078CE, 5%);;
+}
+
+.text-area{
+  width: 100%;
+  resize: none;
 }
