@@ -12,6 +12,7 @@
         color: white;
         background-color: #0078CE;
         width: 236px;
+        transition: .1s;
         height: 46px;
         padding: 0px 22px;
         box-sizing: border-box;
@@ -30,5 +31,10 @@
             font-size: 20px;
             height: 100%;
         }
+    }
+}
+.new-order-button:hover {
+    a {
+        background-color: #2197eb;
     }
 }

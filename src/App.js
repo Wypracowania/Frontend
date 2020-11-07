@@ -13,8 +13,8 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <div className="app-container">
         <Navside/>
+        <div className="app-container">
           <Switch>
             <Route exact path="/" component={ AllOrders } />
             <Route path="/login" component={ Login } />
