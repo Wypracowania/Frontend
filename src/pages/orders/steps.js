@@ -20,19 +20,19 @@ const Steps = (props) =>{
     return(
         <div>        
             <div className="steps">
-            <div className="step-box">
-                <span className="step-number first">
+            <div className="step-box first">
+                <span className="step-number">
                     1
                 </span>
             </div>
             
-            <div className="step-box">
-                <span className="step-number second ">
+            <div className="step-box second">
+                <span className="step-number">
                     2
                 </span>
             </div>
-            <div className="step-box">
-                <span className="step-number third">
+            <div className="step-box third">
+                <span className="step-number">
                     3
                 </span>
             </div>

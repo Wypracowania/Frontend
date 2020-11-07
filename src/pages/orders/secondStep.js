@@ -58,7 +58,7 @@ const SecondStep = () => {
         placeholder="Wybierz tematykę"
         onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
       >
-        <option value="Wybierz tematykę">Wybierz tematykę</option>
+        <option value="Wybierz tematykę">Wybierz tematykę...</option>
         <option value="Wiersz">Wiersz</option>
         <option value="Esej">Esej</option>
         <option value="Wypracowanie">Wypracowanie</option>

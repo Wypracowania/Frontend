@@ -4,9 +4,15 @@ import "../../styles/firstStep.scss";
 
 const FirstStep = () =>{
 
-  const [firstStepData, setData] = useState({});
+  const [firstStepData, setData] = useState({
+    document: "WYP",
+    category: "HUM",
+    pages: 1
+  });
   const [isSubmitted, changeSubmit] = useState(false);
   const [isVisible, changeVisibility] = useState(true);
+  const [isValid, changeValidation] = useState(false)
+  const [formElements, changeElements] = useState([]);
   const dispatch = useDispatch();
 
   const firstStepDataUpload = ( data ) => ({ 
@@ -24,19 +30,84 @@ const FirstStep = () =>{
     payload: bool
   });
 
+  // useEffect(() =>{
+  //   const selectType = document.querySelector(".type");
+  //   const deadline = document.querySelector(".deadline");
+  //   const category = document.querySelector(".category");
+  //   const pages = document.querySelector(".pages");
+  //   const validationElements = [
+  //     {
+  //       element: selectType,
+  //       falseVal: "0"
+  //     },
+  //     {
+  //       element: deadline,
+  //       falseVal: ""
+  //     },
+  //     {
+  //       element: category,
+  //       falseVal: "0"
+  //     }
+  //   ]
+  //   changeElements(validationElements);
+  // }, [])
+
+  // useEffect(() => {
+  //   const validate = (element, falseVal)=>{
+  //     changeSubmit(false);
+  //     console.log(element.value)
+  //     if(element.value <= falseVal){
+  //       element.classList.add("error");
+  //       changeValidation(false);
+  //     }
+  //     else{
+  //       element.classList.remove("error");
+  //       changeValidation(true);
+  //     }
+  //   }
+  //   formElements.map((formEl) =>(
+  //     validate(formEl.element, formEl.falseVal)
+  //   ));
+  // }, [isSubmitted]);
+
   useEffect(() =>{
+    if(isSubmitted === true){
+    const pages = document.querySelector(".pages");
+    const deadline = document.querySelector(".deadline");
+    if(pages.value <= 0){
+      pages.classList.add("error");
+      changeSubmit(false);
+    }
+    else{
+      pages.classList.remove("error");
+    }
+    if(deadline.value === ""){
+      deadline.classList.add("error");
+      changeSubmit(false);
+    }
+    else{
+      deadline.classList.remove("error");
+    }
+    if(pages.value > 0 && deadline.value != ""){
+      changeValidation(true);
+    }
+  }
+  }, [isSubmitted])
+
+  useEffect(() =>{
+    changeVisibility(false);
     dispatch(firstStepDataUpload(firstStepData));
     dispatch(firstStepVisible(isVisible));
-    if(isVisible === false){
-      dispatch(secondStepVisible(true));
-    }
-  })
+      if(isVisible === false){
+        dispatch(secondStepVisible(true));
+      }
+  }, [isValid])
 
   return(
       <div className="first-step">
       <label for="type" className="newOrder__form-label">Typ:</label>
         <div class="form-element">
-          <select className="newOrder__select" name="document" id="type" onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}>
+          <select className="newOrder__select type" name="document" id="type" onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}>
             <option value="WYP">Wypracowanie</option>
             <option value="ESE">Esej</option>
           </select>
@@ -44,7 +115,7 @@ const FirstStep = () =>{
         <label className="newOrder__form-label" for="deadline">Deadline:</label>
         <br />
         <input
-          className="form-element"
+          className="form-element deadline"
           type="date"
           name="deadline"
           id="deadline"
@@ -55,6 +126,7 @@ const FirstStep = () =>{
         <label className="newOrder__form-label" for="category">Kategoria:</label>
         <div class="form-element">
         <select
+          className="newOrder__select category"
           name="category"
           id="category"
           onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
@@ -67,7 +139,7 @@ const FirstStep = () =>{
       <label className="newOrder__form-label" for="pages">Ilość stron:</label>
       <br />
       <input
-        className="form-element"
+        className="form-element pages"
         type="number"
         name="pages"
         id="pages"

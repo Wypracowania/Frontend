@@ -57,7 +57,7 @@ function Login() {
         </label>
         <button type="submit">Log in</button>
       </form>
-      { isLogged ? <Redirect to="/allOrders" /> : null }
+      { isLogged ? <Redirect to="/wszystkieZamowienia" /> : null }
     </div>
   );
 }
