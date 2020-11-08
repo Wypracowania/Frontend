@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
+import { CancelButton } from "./cancelButton";
 import "../../styles/firstStep.scss";
 
 const FirstStep = () =>{
@@ -12,7 +13,6 @@ const FirstStep = () =>{
   const [isSubmitted, changeSubmit] = useState(false);
   const [isVisible, changeVisibility] = useState(true);
   const [isValid, changeValidation] = useState(false)
-  const [formElements, changeElements] = useState([]);
   const dispatch = useDispatch();
 
   const firstStepDataUpload = ( data ) => ({ 
@@ -31,6 +31,7 @@ const FirstStep = () =>{
   });
 
   useEffect(() =>{
+    // Validation process
     if(isSubmitted === true){
     const pages = document.querySelector(".pages");
     const deadline = document.querySelector(".deadline");
@@ -58,6 +59,7 @@ const FirstStep = () =>{
     changeVisibility(false);
     dispatch(firstStepDataUpload(firstStepData));
     dispatch(firstStepVisible(isVisible));
+    // Check if we need to change the component to the second step
       if(isVisible === false){
         dispatch(secondStepVisible(true));
       }
@@ -108,7 +110,7 @@ const FirstStep = () =>{
       />
       </div>
       <div className="first-step__buttons">
-        <button type="button" className="button">Anuluj</button>
+        <CancelButton />
         <button type="button" className="button next-step" onClick={() => {changeSubmit(true); changeVisibility(false)}}>Przejdź dalej</button>
       </div>
       </div>

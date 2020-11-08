@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
+import { CancelButton } from "./cancelButton";
 import "../../styles/secondStep.scss";
 
 const SecondStep = () => {
@@ -29,6 +30,7 @@ const SecondStep = () => {
   })
 
   useEffect(() =>{
+    // Check if provided data is valid
     if(isSubmitted === true){
     const topic = document.querySelector(".topic");
     if(topic.value === ""){
@@ -45,11 +47,13 @@ const SecondStep = () => {
   }, [isSubmitted])
 
   useEffect(() =>{
+    // If data is valid, we are hiding component and dispatching data
     dispatch(secondStepDataUpload(secondStepData));
     dispatch(secondStepVisible(isVisible));
   }, [isValid])
 
   useEffect(() =>{
+    // Without this check we can't toggle between steps
     if(isFirstVisible === true){
       dispatch(firstStepVisible(true));
     }
@@ -96,7 +100,7 @@ const SecondStep = () => {
        />
     </div>
     <div className="second-step__buttons">
-        <button type="button" className="button">Anuluj</button>
+        <CancelButton/>
         <button type="button" className="button" onClick={() => {changeFirstVisibility(true); changeVisibility(false); changeValidation(true)}}>Poprzedni etap</button>
         <button type="button" className="button next-step" onClick={() => {changeSubmit(true); changeVisibility(false)}}>Przejdź dalej</button>
       </div>
