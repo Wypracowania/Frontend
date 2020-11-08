@@ -4,9 +4,12 @@ import "../../styles/secondStep.scss";
 
 const SecondStep = () => {
 
-  const [secondStepData, setData] = useState({});
+  const [secondStepData, setData] = useState({
+    instructions: "brak"
+  });
   const [isSubmitted, changeSubmit] = useState(false);
   const [isFirstVisible, changeFirstVisibility] = useState(false);
+  const [isValid, changeValidation] = useState(false)
   const [isVisible, changeVisibility] = useState(true);
   const dispatch = useDispatch();
 
@@ -25,11 +28,26 @@ const SecondStep = () => {
     payload: bool
   })
 
+  useEffect(() =>{
+    if(isSubmitted === true){
+    const topic = document.querySelector(".topic");
+    if(topic.value === ""){
+      topic.classList.add("error");
+      changeSubmit(false);
+    }
+    else{
+      topic.classList.remove("error");
+    }
+    if(topic.value != ""){
+      changeValidation(true);
+    }
+  }
+  }, [isSubmitted])
 
   useEffect(() =>{
     dispatch(secondStepDataUpload(secondStepData));
     dispatch(secondStepVisible(isVisible));
-  }, [isVisible])
+  }, [isValid])
 
   useEffect(() =>{
     if(isFirstVisible === true){
@@ -38,11 +56,12 @@ const SecondStep = () => {
   }, [isFirstVisible])
 
   return(
+    <div>
     <div className="second-step">
       <label className="newOrder__form-label" for="topic">Temat:</label>
       <br />
         <input
-          className="form-element"
+          className="form-element topic"
           type="text"
           name="topic"
           id="topic"
@@ -59,16 +78,24 @@ const SecondStep = () => {
         onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
       >
         <option value="Wybierz tematykę">Wybierz tematykę...</option>
-        <option value="Wiersz">Wiersz</option>
-        <option value="Esej">Esej</option>
-        <option value="Wypracowanie">Wypracowanie</option>
+        <option value="Lektury szkolne">Lektury szkolne</option>
+        <option value="Nauki ścisłe">Nauki ścisłe</option>
+        <option value="Nauki biologiczne">Nauki biologiczne</option>
       </select>
       </div>
       <label className="newOrder__form-label" for="instructions">Instrukcje:</label>
       <br />
-      <textarea className="form-element text-area" name="instructions" rows="10" cols="50"
-      onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}} />
-      <div className="second-step__buttons">
+      <textarea 
+      className="form-element text-area" 
+      name="instructions" 
+      rows="10" 
+      cols="50"
+      placeholder="Tutaj wpisz swoje instrukcje dotyczące zadania.
+      Upewnij się, że nie zawierają żadnych osobistych informacji, jak np. nr telefonu, czy adres e-mail."
+      onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
+       />
+    </div>
+    <div className="second-step__buttons">
         <button type="button" className="button">Anuluj</button>
         <button type="button" className="button" onClick={() => {changeFirstVisibility(true); changeVisibility(false)}}>Poprzedni etap</button>
         <button type="button" className="button next-step" onClick={() => {changeSubmit(true); changeVisibility(false)}}>Przejdź dalej</button>

@@ -30,46 +30,6 @@ const FirstStep = () =>{
     payload: bool
   });
 
-  // useEffect(() =>{
-  //   const selectType = document.querySelector(".type");
-  //   const deadline = document.querySelector(".deadline");
-  //   const category = document.querySelector(".category");
-  //   const pages = document.querySelector(".pages");
-  //   const validationElements = [
-  //     {
-  //       element: selectType,
-  //       falseVal: "0"
-  //     },
-  //     {
-  //       element: deadline,
-  //       falseVal: ""
-  //     },
-  //     {
-  //       element: category,
-  //       falseVal: "0"
-  //     }
-  //   ]
-  //   changeElements(validationElements);
-  // }, [])
-
-  // useEffect(() => {
-  //   const validate = (element, falseVal)=>{
-  //     changeSubmit(false);
-  //     console.log(element.value)
-  //     if(element.value <= falseVal){
-  //       element.classList.add("error");
-  //       changeValidation(false);
-  //     }
-  //     else{
-  //       element.classList.remove("error");
-  //       changeValidation(true);
-  //     }
-  //   }
-  //   formElements.map((formEl) =>(
-  //     validate(formEl.element, formEl.falseVal)
-  //   ));
-  // }, [isSubmitted]);
-
   useEffect(() =>{
     if(isSubmitted === true){
     const pages = document.querySelector(".pages");
@@ -104,6 +64,7 @@ const FirstStep = () =>{
   }, [isValid])
 
   return(
+    <div>
       <div className="first-step">
       <label for="type" className="newOrder__form-label">Typ:</label>
         <div class="form-element">
@@ -131,8 +92,8 @@ const FirstStep = () =>{
           id="category"
           onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
         >
-          <option value="PRZ">Nauki przyrodnicze</option>
           <option value="HUM">Nauki humanistyczne</option>
+          <option value="PRZ">Nauki przyrodnicze</option>
           <option value="ŚCI">Nauki ścisłe</option>
         </select>
         </div>
@@ -145,6 +106,7 @@ const FirstStep = () =>{
         id="pages"
         onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
       />
+      </div>
       <div className="first-step__buttons">
         <button type="button" className="button">Anuluj</button>
         <button type="button" className="button next-step" onClick={() => {changeSubmit(true); changeVisibility(false)}}>Przejdź dalej</button>

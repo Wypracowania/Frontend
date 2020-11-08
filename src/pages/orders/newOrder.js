@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ADD_ORDER_URL } from 'globalVariables';
 import { getUsername } from 'authentication';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Steps from './steps';
 import AuthenticationWrapper from '../authentication/Authentication';
