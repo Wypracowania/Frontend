@@ -6,6 +6,7 @@ import "../../styles/secondStep.scss";
 const SecondStep = () => {
 
   const [secondStepData, setData] = useState({
+    subject: "lektury szkolne",
     instructions: "brak"
   });
   const [isSubmitted, changeSubmit] = useState(false);
@@ -69,7 +70,6 @@ const SecondStep = () => {
           type="text"
           name="topic"
           id="topic"
-          placeholder="Wpisz temat"
           onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
         />
         <br />
@@ -78,10 +78,8 @@ const SecondStep = () => {
       <select
         name="subject"
         id="subject"
-        placeholder="Wybierz tematykę"
         onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
       >
-        <option value="Wybierz tematykę">Wybierz tematykę...</option>
         <option value="Lektury szkolne">Lektury szkolne</option>
         <option value="Nauki ścisłe">Nauki ścisłe</option>
         <option value="Nauki biologiczne">Nauki biologiczne</option>
