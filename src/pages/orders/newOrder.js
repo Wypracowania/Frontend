@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ADD_ORDER_URL } from 'globalVariables';
 import { getUsername } from 'authentication';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Steps from './steps';
 import AuthenticationWrapper from '../authentication/Authentication';
 import FirstStep from './firstStep';
 import SecondStep from './secondStep';
 import "../../styles/newOrder.scss";
+import Summary from './summary';
 
 
 
@@ -69,11 +70,13 @@ const NewOrder = () => {
 
     })
     .catch((err) => {
-      console.log(err);
+      const error = document.querySelector('.error-text');
+      error.innerHTML= "Wystąpił błąd podczas wysyłania zamówienia";
     });
   
   changeSubmit(false);
   }, [isSubmited])
+
 
   return (
     <AuthenticationWrapper>
@@ -81,11 +84,17 @@ const NewOrder = () => {
         <h2 className="newOrder_header">Zamówienie</h2>
       {firstStepVisible ? <Steps display="first" /> : ""}
       {secondStepVisible ? <Steps display="second" /> : ""}
+        <div className="error-box">
+          <p className="error-text"></p>
+        </div>
         <div className="newOrder-box">
           <form onSubmit={ e => {e.preventDefault(); changeSubmit(true)}}>
             {firstStepVisible ? <FirstStep/> : ""}
             {secondStepVisible ? <SecondStep /> : ""}
-            <button className="button" onClick={() =>{changeOrderData({...orderData, ...data})}}>Złóż zamówienie</button>
+            <div>
+            <Summary firstStepData={firstStepData} secondStepData={secondStepData} />
+              <button className="button" onClick={() =>{changeOrderData({...orderData, ...data})}}>Złóż zamówienie</button>
+            </div>
           </form>
       {/* Sledzenie zamówienia po jego utworzeniu. Etap licytacji */}
       { isCreated ? <Redirect to={`/zamowienie/${id}`} /> : null } 
