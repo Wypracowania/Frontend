@@ -78,6 +78,7 @@ const NewOrder = () => {
   return (
     <AuthenticationWrapper>
       <div className="newOrder">
+        <h2 className="newOrder_header">Zamówienie</h2>
       {firstStepVisible ? <Steps display="first" /> : ""}
       {secondStepVisible ? <Steps display="second" /> : ""}
         <div className="newOrder-box">

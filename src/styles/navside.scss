@@ -7,12 +7,16 @@
 .navside {
     background-color: $background;
     height: 100vh;
+    position: fixed;
 
     ul {
         height: 100vh;
         display: flex;
         flex-direction: column;
         padding-left: 20px;
+        padding-left: 0;
+        width: 221px;
+        border-right: 1px solid rgb(230, 230, 230);
     }
 
     .navside__link{
@@ -23,13 +27,14 @@
         box-sizing: content-box;
         transition: .1s ease-in;
         border-left: 3px solid transparent;
-        span{
+        span {
+            font-size: 15px;
             svg{
                 width: 18px;
                 height: 18px;
                 margin: 0;
                 padding: 0;
-                margin-right: 20px;
+                margin-right: 16px;
                 color: #BFC5D2;
             }
         }
@@ -39,13 +44,12 @@
         }
         &:hover{
             background-color: $navLinksColor;
-            border-color: #676C7D;
+            border-color: #0078CE;
         }
     }
 
     .navside-active {
         background-color: $navLinksColor;
-        border-left: 3px solid #676C7D;
+        border-left: 3px solid #0078CE;
     }
-
 }

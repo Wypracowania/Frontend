@@ -91,7 +91,7 @@ const SecondStep = () => {
       className="form-element text-area" 
       name="instructions" 
       rows="10" 
-      cols="50"
+      cols="40"
       placeholder="Tutaj wpisz swoje instrukcje dotyczące zadania.
       Upewnij się, że nie zawierają żadnych osobistych informacji, jak np. nr telefonu, czy adres e-mail."
       onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}

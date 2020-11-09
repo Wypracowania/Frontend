@@ -1,15 +1,21 @@
+// IMPORTS
+
+@import "./variables.scss";
+
+//SECOND STEP STYLES
+
 .second-step{
-    margin: auto 30px;
-    margin-top: 93px;
-    padding: 40px;
+    margin-top: $marginB;
+    padding: 44px;
     box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+    box-sizing: border-box;
 }
 
 .second-step__buttons{
     width: 100%;
     display: flex;
-    margin-top: 61px;
     justify-content: flex-end;
+    margin-top: $marginB * 1.5;
     &:first-child(){
         justify-self: flex-start;
     }

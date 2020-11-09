@@ -49,7 +49,7 @@ const FirstStep = () =>{
     else{
       deadline.classList.remove("error");
     }
-    if(pages.value > 0 && deadline.value != ""){
+    if(pages.value > 0 && deadline.value !== ""){
       changeValidation(true);
     }
   }
