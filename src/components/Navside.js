@@ -7,7 +7,8 @@ import {
     faSignOutAlt,
     faQuestion,
     faPlus,
-    faThLarge
+    faThLarge,
+    faCommentDots
 } from '@fortawesome/free-solid-svg-icons'
 import '../styles/navside.scss'; // assuming a styles directory under src/
 
@@ -45,6 +46,9 @@ const Navside = () => {
             </NavLink>
             <NavLink to="/wszystkie-zamowienia" className="navside__link" activeClassName="navside-active">
                 <span><FontAwesomeIcon icon={faThLarge} />Moje zamówienia</span>
+            </NavLink>
+            <NavLink to="/wiadomosci" className="navside__link" activeClassName="navside-active">
+                <span><FontAwesomeIcon icon={faCommentDots} />Wiadomości</span>
             </NavLink>
             <NavLink to="/pomoc" className="navside__link" activeClassName="navside_active">
                 <span> <FontAwesomeIcon icon={faQuestion} />Pomoc</span>
