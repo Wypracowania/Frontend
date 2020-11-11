@@ -37,7 +37,7 @@ export default function Chat () {
                         </div>
                         <span className="hour">10:32 am</span>
                     </div>
-                    <div className="chat-message">Lolo</div>
+                    <div className="chat-message">Cześć, nazywam się Ricardo ! Chętnie odpowiem na wszystkie Twoje pytania</div>
                 </div>
                 <div className="input">
                     <textarea type="text" resize="none" placeholder="Tutaj wpisz tekst wiadomości"/>
