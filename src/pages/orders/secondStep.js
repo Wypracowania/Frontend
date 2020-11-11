@@ -12,7 +12,7 @@ const SecondStep = () => {
   const [isSubmitted, changeSubmit] = useState(false);
   const [isFirstVisible, changeFirstVisibility] = useState(false);
   const [isValid, changeValidation] = useState(false)
-  const [isVisible, changeVisibility] = useState(true);
+  const [isVisible, changeVisibility] = useState(false);
   const dispatch = useDispatch();
 
   const secondStepDataUpload = ( data ) => ({ 
@@ -46,7 +46,7 @@ const SecondStep = () => {
     else{
       topic.classList.remove("error");
     }
-    if(topic.value != ""){
+    if(topic.value !== ""){
       changeValidation(true);
     }
   }
@@ -65,6 +65,7 @@ const SecondStep = () => {
     // Without this check we can't toggle between steps
     if(isFirstVisible === true){
       dispatch(firstStepVisible(true));
+      dispatch(secondStepVisible(isVisible));
     }
   }, [isFirstVisible])
 
@@ -107,8 +108,8 @@ const SecondStep = () => {
       </div>
       <div className="second-step__buttons">
           <CancelButton/>
-          <button type="button" className="button" onClick={() => {changeFirstVisibility(true); changeVisibility(false); changeValidation(true)}}>Poprzedni etap</button>
-          <button type="button" className="button next-step" onClick={() => {changeSubmit(true)}}>Przejdź dalej</button>
+          <button type="button" className="button" onClick={() => {changeFirstVisibility(true); changeVisibility(false)}}>Poprzedni etap</button>
+          <button type="button" className="button next-step" onClick={() => {changeSubmit(true); changeVisibility(true)}}>Przejdź dalej</button>
       </div>
     </div>
   )

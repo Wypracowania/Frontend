@@ -10,7 +10,6 @@ import Summary from './summary';
 
 
 const NewOrder = () => {
-  
 
   const isFirstStepVisible = useSelector(
     state => state.newOrderReducer.firstStepVisible
@@ -24,9 +23,9 @@ const NewOrder = () => {
     state => state.newOrderReducer.summaryVisible
   )
 
-
   return (
     <AuthenticationWrapper>
+      {isSummaryVisible ? <Summary /> : "" }
       <div className="newOrder">
         <h2 className="newOrder_header">Zamówienie</h2>
       {isFirstStepVisible ? <Steps display="first" /> : ""}
@@ -38,7 +37,6 @@ const NewOrder = () => {
           <form onSubmit={ e => {e.preventDefault()}}>
             {isFirstStepVisible ? <FirstStep/> : ""}
             {isSecondStepVisible ? <SecondStep /> : ""}
-            {isSummaryVisible ? <Summary /> : ""}
           </form>
       </div>
     </div>

@@ -4,6 +4,15 @@
 
 // SUMMARY STYLES
 
+.summary-box{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 2;
+    margin-left: -241px;
+    background-color: #CBCBCB80;
+}
+
 .summary{
     width: 714px;
     height: 518px;
@@ -24,4 +33,9 @@
 
 .summary-data{
     margin-top: 10px;
+}
+
+.summary-buttons{
+    display: flex;
+    justify-content: space-around;
 }
