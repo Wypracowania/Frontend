@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { LOGIN_URL } from '../../globalVariables';
-import { setUserCookie, setTokenCookie, loginUser, userHaveSession } from '../../authentication';
+import { getUsername, loginUser, userHaveSession } from '../../authentication';
 // Funkcja służy do przechowywania ciasteczka/sesji z tokenem
 
 function Login() {
@@ -9,9 +10,16 @@ function Login() {
   const [password, setPassword] = useState('');
   const [isLogged, changeLoginStatus] = useState(false);
 
+  const logInUser = useDispatch()
+  const logUsername = getUsername()
+
   useEffect(()=>{
     if(userHaveSession()) {
       changeLoginStatus(true)
+      logInUser({
+        type: "LOGIN_USER",
+        payload: logUsername
+      })
     }
   })
 
@@ -57,7 +65,7 @@ function Login() {
         </label>
         <button type="submit">Log in</button>
       </form>
-      { isLogged ? <Redirect to="/wszystkieZamowienia" /> : null }
+      { isLogged ? <Redirect to="/wszystkie-zamowienia" /> : null }
     </div>
   );
 }

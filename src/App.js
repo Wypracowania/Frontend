@@ -19,8 +19,8 @@ function App() {
             <Route exact path="/" component={ AllOrders } />
             <Route path="/login" component={ Login } />
             <Route path="/zamowienie/:id" component={ OrderDetails } />
-            <Route path="/noweZamowienie" component={ NewOrder } />
-            <Route path="/wszystkieZamowienia" component={ AllOrders } />
+            <Route path="/nowe-zamowienie" component={ NewOrder } />
+            <Route path="/wszystkie-zamowienia" component={ AllOrders } />
             <Route path="/registration" component={ Registration } />
           </Switch>
         </div>

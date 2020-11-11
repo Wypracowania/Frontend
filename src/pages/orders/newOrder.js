@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ADD_ORDER_URL } from 'globalVariables';
 import { getUsername } from 'authentication';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Steps from './steps';
 import AuthenticationWrapper from '../authentication/Authentication';
@@ -15,18 +15,18 @@ const NewOrder = () => {
 
   // setting state from Redux
   const firstStepData = useSelector(
-    state => state.firstStep
+    state => state.newOrderReducer.firstStep
   );
   const secondStepData = useSelector(
-    state => state.secondStep
+    state => state.newOrderReducer.secondStep
   );
 
   const firstStepVisible = useSelector(
-    state => state.firstStepVisible
+    state => state.newOrderReducer.firstStepVisible
   );
 
   const secondStepVisible = useSelector(
-    state => state.secondStepVisible
+    state => state.newOrderReducer.secondStepVisible
   );
 
 
@@ -51,7 +51,7 @@ const NewOrder = () => {
       return;
     }
     console.log(orderData)
-
+    
     fetch(ADD_ORDER_URL, {
       method: 'POST',
       headers: {
