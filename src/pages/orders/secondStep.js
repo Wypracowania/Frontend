@@ -20,13 +20,18 @@ const SecondStep = () => {
       payload: data
   });
 
+  const firstStepVisible = (bool) => ({
+    type: "FIRST_STEP_VISIBLE",
+    payload: bool
+  })
+
   const secondStepVisible = (bool) => ({
     type: "SECOND_STEP_VISIBLE",
     payload: bool
   })
 
-  const firstStepVisible = (bool) => ({
-    type: "FIRST_STEP_VISIBLE",
+  const summaryVisible = (bool) => ({
+    type: 'SUMMARY_VISIBLE',
     payload: bool
   })
 
@@ -49,8 +54,11 @@ const SecondStep = () => {
 
   useEffect(() =>{
     // If data is valid, we are hiding component and dispatching data
-    dispatch(secondStepDataUpload(secondStepData));
-    dispatch(secondStepVisible(isVisible));
+    if(isValid === true){
+      dispatch(secondStepDataUpload(secondStepData));
+      dispatch(secondStepVisible(isVisible));
+      dispatch(summaryVisible(true));
+    }
   }, [isValid])
 
   useEffect(() =>{
@@ -61,46 +69,46 @@ const SecondStep = () => {
   }, [isFirstVisible])
 
   return(
-    <div>
-    <div className="second-step">
-      <label className="newOrder__form-label" for="topic">Temat:</label>
-      <br />
-        <input
-          className="form-element topic"
-          type="text"
-          name="topic"
-          id="topic"
-          onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
-        />
+    <div className="step-container">
+      <div className="second-step step">
+        <label className="newOrder__form-label" for="topic">Temat:</label>
         <br />
-      <label className="newOrder__form-label" for="subject">Tematyka:</label>
-      <div class="form-element">
-      <select
-        name="subject"
-        id="subject"
+          <input
+            className="form-element topic"
+            type="text"
+            name="topic"
+            id="topic"
+            onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
+          />
+          <br />
+        <label className="newOrder__form-label" for="subject">Tematyka:</label>
+        <div class="form-element">
+        <select
+          name="subject"
+          id="subject"
+          onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
+        >
+          <option value="Lektury szkolne">Lektury szkolne</option>
+          <option value="Nauki ścisłe">Nauki ścisłe</option>
+          <option value="Nauki biologiczne">Nauki biologiczne</option>
+        </select>
+        </div>
+        <label className="newOrder__form-label" for="instructions">Instrukcje:</label>
+        <br />
+        <textarea 
+        className="form-element text-area" 
+        name="instructions" 
+        rows="10" 
+        cols="40"
+        placeholder="Tutaj wpisz swoje instrukcje dotyczące zadania.
+        Upewnij się, że nie zawierają żadnych osobistych informacji, jak np. nr telefonu, czy adres e-mail."
         onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
-      >
-        <option value="Lektury szkolne">Lektury szkolne</option>
-        <option value="Nauki ścisłe">Nauki ścisłe</option>
-        <option value="Nauki biologiczne">Nauki biologiczne</option>
-      </select>
+        />
       </div>
-      <label className="newOrder__form-label" for="instructions">Instrukcje:</label>
-      <br />
-      <textarea 
-      className="form-element text-area" 
-      name="instructions" 
-      rows="10" 
-      cols="40"
-      placeholder="Tutaj wpisz swoje instrukcje dotyczące zadania.
-      Upewnij się, że nie zawierają żadnych osobistych informacji, jak np. nr telefonu, czy adres e-mail."
-      onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
-       />
-    </div>
-    <div className="second-step__buttons">
-        <CancelButton/>
-        <button type="button" className="button" onClick={() => {changeFirstVisibility(true); changeVisibility(false); changeValidation(true)}}>Poprzedni etap</button>
-        <button type="button" className="button next-step" onClick={() => {changeSubmit(true); changeVisibility(false)}}>Przejdź dalej</button>
+      <div className="second-step__buttons">
+          <CancelButton/>
+          <button type="button" className="button" onClick={() => {changeFirstVisibility(true); changeVisibility(false); changeValidation(true)}}>Poprzedni etap</button>
+          <button type="button" className="button next-step" onClick={() => {changeSubmit(true)}}>Przejdź dalej</button>
       </div>
     </div>
   )

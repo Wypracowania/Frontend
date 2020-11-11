@@ -8,23 +8,17 @@
     background-color: $background;
     height: 100vh;
     position: fixed;
-<<<<<<< HEAD
-=======
     border-right: 1px solid rgb(230, 230, 230);
->>>>>>> a26e0a24260f1cbdc0f74710ce041e74c36fd0d4
 
     ul {
         height: 100vh;
         display: flex;
         flex-direction: column;
         padding-left: 20px;
-<<<<<<< HEAD
         padding-left: 0;
         width: 221px;
         border-right: 1px solid rgb(230, 230, 230);
-=======
         width: 221px;
->>>>>>> a26e0a24260f1cbdc0f74710ce041e74c36fd0d4
     }
 
     .navside__link{
@@ -59,9 +53,6 @@
     .navside-active {
         background-color: $navLinksColor;
         border-left: 3px solid #0078CE;
-<<<<<<< HEAD
-    }
-=======
         font-weight: 500;
     }
 
@@ -101,5 +92,4 @@
             }
         }
     }
->>>>>>> a26e0a24260f1cbdc0f74710ce041e74c36fd0d4
 }

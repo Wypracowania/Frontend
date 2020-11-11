@@ -67,8 +67,8 @@ const FirstStep = () =>{
 
 
   return(
-    <div>
-      <div className="first-step">
+    <div className="step-container">
+      <div className="first-step step">
       <label for="type" className="newOrder__form-label">Typ:</label>
         <div class="form-element">
           <select className="newOrder__select type" name="document" id="type" onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}>

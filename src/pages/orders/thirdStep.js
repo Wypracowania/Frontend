@@ -3,7 +3,11 @@ import React from "react";
 
 const ThirdStep = () => {
     return(
-        <div></div>
+        <div className="step-container">
+            <div className="third-step step">
+
+            </div>
+        </div>
     )
 }
 

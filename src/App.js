@@ -13,11 +13,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-<<<<<<< HEAD
-      <Navside/>
-=======
         <Navside/>
->>>>>>> a26e0a24260f1cbdc0f74710ce041e74c36fd0d4
         <div className="app-container">
           <Switch>
             <Route exact path="/" component={ AllOrders } />
