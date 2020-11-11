@@ -28,8 +28,7 @@ const AuthenticationWrapper = ({ children }) => {
     })
     return (
         <>
-            { isLogged ? null : <Redirect to="/login" /> }
-            { children }
+            { isLogged ? children : <Redirect to="/login" /> }
         </>
     )
 }

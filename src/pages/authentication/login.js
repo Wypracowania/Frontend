@@ -65,7 +65,7 @@ function Login() {
         </label>
         <button type="submit">Log in</button>
       </form>
-      { isLogged ? <Redirect to="/wszystkieZamowienia" /> : null }
+      { isLogged ? <Redirect to="/wszystkie-zamowienia" /> : null }
     </div>
   );
 }
