@@ -1,49 +1,103 @@
+// IMPORTS
 
-.newOrder__select{
-    background: rgba(224, 231, 255, 0.2);
-    border: 1px solid #EAEFFF;
-    box-sizing: border-box;
-    border-radius: 5px;
-    }
-    
-    .newOrder__form-label{
-        font-family: Work Sans;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 18px;
-        line-height: 32px;
-        color: #2E384D;
-    }
-    
-    
-    // GLOBAL SELECT CONTAINERS
-    .form-element {
-        font-family: Work Sans;
-        padding: 10px;
-        border: 1px solid #EAEFFF;
-        position: relative;
-        border-radius: 5px;
-        background: rgba(224, 231, 255, 0.2);
-      }
-      .form-element select {
-        width: 100%;
-        border: 0;
-        font-size: 16px;
-        background: transparent;
-        outline: none;
-        -webkit-appearance: none;
-           -moz-appearance: none;
-                appearance: none;
-      }
-      .form-element:after {
-        content: 'keyboard_arrow_down';
-        font-family: 'material icons';
-        font-size: 24px;
-        color: #666;
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-      }
-    
+@import "./variables.scss";
+
+
+// NEW ORDER STYLES
+
+.newOrder{
+  background-color: #F8FAFB;
+  width: 100%;
+}
+
+
+.newOrder__select {
+  background: rgba(224, 231, 255, 0.2);
+  border: 1px solid #EAEFFF;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.newOrder__form-label {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 32px;
+  color: #2E384D;
+}
+
+
+// GLOBAL SELECT CONTAINERS
+.form-element {
+  font-size: 1rem;
+  font-weight: 200;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #EAEFFF;
+  position: relative;
+  border-radius: 7px;
+  background: rgba(224, 231, 255, 0.2);
+}
+
+.form-element select {
+  width: 100%;
+  border: 0;
+  font-size: 16px;
+  font-weight: 200;
+  background: transparent;
+  outline: none;
+  appearance: none;
+  option{
+    color: black;
+    background-color: #EAEFFF;
+  }
+}
+
+.form-element:after {
+  content: 'keyboard_arrow_down';
+  font-family: 'material icons';
+  font-size: 24px;
+  color: #666;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.button {
+  width: 175px;
+  height: 46px;
+  font-size: 1rem;
+  background-color: #DADADA;
+  border: none;
+  border-radius: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  transition: .2s ease-in;
+  border-bottom: 2px solid darken(#DADADA, 5%);
+  &:hover{
+    background-color: darken(#DADADA, 10%);
+    transform: translateY(1px);
+  }
+}
+
+.next-step{
+  background-color: #0078CE;
+  color: #fff;
+  border-color: darken(#0078CE, 5%);
+  margin-right: 30px;
+  &:hover{
+    background-color: darken(#0078CE, 10%);
+  }
+}
+
+.text-area{
+  width: 100%;
+  resize: none;
+}
+
+.error{
+  border: 1px solid red;
+  color: red;
+}
