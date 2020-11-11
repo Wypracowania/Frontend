@@ -16,18 +16,18 @@ const NewOrder = () => {
 
   // setting state from Redux
   const firstStepData = useSelector(
-    state => state.firstStep
+    state => state.newOrderReducer.firstStep
   );
   const secondStepData = useSelector(
-    state => state.secondStep
+    state => state.newOrderReducer.secondStep
   );
 
   const firstStepVisible = useSelector(
-    state => state.firstStepVisible
+    state => state.newOrderReducer.firstStepVisible
   );
 
   const secondStepVisible = useSelector(
-    state => state.secondStepVisible
+    state => state.newOrderReducer.secondStepVisible
   );
 
 
@@ -52,7 +52,7 @@ const NewOrder = () => {
       return;
     }
     console.log(orderData)
-
+    
     fetch(ADD_ORDER_URL, {
       method: 'POST',
       headers: {

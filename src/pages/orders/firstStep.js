@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { CancelButton } from "./cancelButton";
-import "../../styles/firstStep.scss";
+import "../../styles/components/firstStep.scss";
 
 const FirstStep = () =>{
 

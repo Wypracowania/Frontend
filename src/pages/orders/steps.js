@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../../styles/steps.scss";
+import "../../styles/components/steps.scss";
 
 const Steps = (props) =>{
 

@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import { createStore } from "redux"
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { newOrderReducer } from "./store/reducers/new-order-reducer"
+import rootReducer from "./store/reducers/root-reducer"
 
-const store = createStore(newOrderReducer)
+const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>

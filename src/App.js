@@ -13,14 +13,18 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+<<<<<<< HEAD
       <Navside/>
+=======
+        <Navside/>
+>>>>>>> a26e0a24260f1cbdc0f74710ce041e74c36fd0d4
         <div className="app-container">
           <Switch>
             <Route exact path="/" component={ AllOrders } />
             <Route path="/login" component={ Login } />
             <Route path="/zamowienie/:id" component={ OrderDetails } />
-            <Route path="/noweZamowienie" component={ NewOrder } />
-            <Route path="/wszystkieZamowienia" component={ AllOrders } />
+            <Route path="/nowe-zamowienie" component={ NewOrder } />
+            <Route path="/wszystkie-zamowienia" component={ AllOrders } />
             <Route path="/registration" component={ Registration } />
           </Switch>
         </div>

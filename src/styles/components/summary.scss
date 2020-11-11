@@ -1,0 +1,17 @@
+// IMPORTS
+
+@import "../variables.scss";
+
+// SUMMARY STYLES
+
+.summary{
+    position: absolute;
+    padding: 95px;
+    padding-left: 45px;
+    border-radius: 4px;
+    background: #FAFAFC;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+}
