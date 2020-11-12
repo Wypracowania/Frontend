@@ -8,6 +8,7 @@
   background-color: #F8FAFB;
   width: 100%;
   width: 1020px;
+  margin: $marginB;
   margin-left: auto;
   margin-right: auto;
 }
@@ -18,6 +19,13 @@
   box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
   box-sizing: border-box;
 }
+
+
+// Second step container, I need to have him here because styles won't change
+.second-step{
+  padding: 12px 44px;
+}
+
 
 .newOrder_header{
   font-weight: 400;

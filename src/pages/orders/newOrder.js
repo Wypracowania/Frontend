@@ -4,8 +4,8 @@ import Steps from './steps';
 import AuthenticationWrapper from '../authentication/Authentication';
 import FirstStep from './firstStep';
 import SecondStep from './secondStep';
-import "../../styles/newOrder.scss";
 import Summary from './summary';
+import "../../styles/newOrder.scss";
 
 
 

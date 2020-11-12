@@ -7,7 +7,7 @@
 .summary-box{
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     z-index: 2;
     margin-left: -241px;
     background-color: #CBCBCB80;
@@ -36,6 +36,14 @@
 }
 
 .summary-buttons{
+    margin-top: $marginB*2;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    .button{
+        width: 329px;
+        padding: 0;
+    }
+    .next-step{
+        width: 50%;
+    }
 }

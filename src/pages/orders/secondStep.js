@@ -58,6 +58,8 @@ const SecondStep = () => {
       dispatch(secondStepDataUpload(secondStepData));
       dispatch(secondStepVisible(isVisible));
       dispatch(summaryVisible(true));
+      changeValidation(false);
+      changeSubmit(false);
     }
   }, [isValid])
 

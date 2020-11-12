@@ -4,12 +4,12 @@
 
 //SECOND STEP STYLES
 
-
 .second-step__buttons{
     width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-top: $marginB * 1.5;
+    margin-bottom: $marginM;
     &:first-child(){
         justify-self: flex-start;
     }
