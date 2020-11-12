@@ -8,6 +8,7 @@ import './styles/app.scss'
 import Login from 'pages/authentication/login';
 import Registration from 'pages/registration';
 import Navside from 'components/Navside';
+import Chat from 'pages/Chat'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/nowe-zamowienie" component={ NewOrder } />
             <Route path="/wszystkie-zamowienia" component={ AllOrders } />
             <Route path="/registration" component={ Registration } />
+            <Route path="/wiadomosci" component={ Chat } />
           </Switch>
         </div>
       </BrowserRouter>
