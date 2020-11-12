@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Steps from './steps';
 import AuthenticationWrapper from '../authentication/Authentication';
 import FirstStep from './firstStep';
 import SecondStep from './secondStep';
-import Summary from './summary';
 import "../../styles/newOrder.scss";
+import Summary from './summary';
 
 
 
 const NewOrder = () => {
+
+  // setting state from Redux
+  const firstStep = useSelector(
+    state => state.newOrderReducer.firstStep
+  );
+  const secondStep = useSelector(
+    state => state.newOrderReducer.secondStep
+  );
 
   const isFirstStepVisible = useSelector(
     state => state.newOrderReducer.firstStepVisible
@@ -25,7 +33,7 @@ const NewOrder = () => {
 
   return (
     <AuthenticationWrapper>
-      {isSummaryVisible ? <Summary /> : "" }
+      {isSummaryVisible ? <Summary firstStepData={firstStep} secondStepData={secondStep} /> : "" }
       <div className="newOrder">
         <h2 className="newOrder_header">Zamówienie</h2>
       {isFirstStepVisible ? <Steps display="first" /> : ""}
@@ -35,8 +43,8 @@ const NewOrder = () => {
         </div>
         <div className="newOrder-box">
           <form onSubmit={ e => {e.preventDefault()}}>
-            {isFirstStepVisible ? <FirstStep/> : ""}
-            {isSecondStepVisible ? <SecondStep /> : ""}
+            {isFirstStepVisible ? <FirstStep firstStepData={firstStep} secondStepData={secondStep} /> : ""}
+            {isSecondStepVisible ? <SecondStep firstStepData={firstStep} secondStepData={secondStep} /> : ""}
           </form>
       </div>
     </div>

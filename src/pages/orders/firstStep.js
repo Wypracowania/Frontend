@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { CancelButton } from "./cancelButton";
 import "../../styles/components/firstStep.scss";
 
-const FirstStep = () =>{
+const FirstStep = (props) =>{
 
-  const [firstStepData, setData] = useState({
+  const [firstStepData, setData] = useState(props.firstStepData || {
     document: "WYP",
     category: "HUM",
     pages: 1
@@ -71,7 +71,12 @@ const FirstStep = () =>{
       <div className="first-step step">
       <label for="type" className="newOrder__form-label">Typ:</label>
         <div class="form-element">
-          <select className="newOrder__select type" name="document" id="type" onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}>
+          <select 
+          className="newOrder__select type" 
+          name="document" 
+          id="type" 
+          defaultValue={firstStepData.document}
+          onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}>
             <option value="WYP">Wypracowanie</option>
             <option value="ESE">Esej</option>
           </select>
@@ -84,6 +89,7 @@ const FirstStep = () =>{
           name="deadline"
           id="deadline"
           placeholder="Ustaw datę"
+          defaultValue={firstStepData.deadline}
           onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
         />
         <br />
@@ -93,6 +99,7 @@ const FirstStep = () =>{
           className="newOrder__select category"
           name="category"
           id="category"
+          defaultValue={firstStepData.category || "Nauki humanistyczne"}
           onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
         >
           <option value="HUM">Nauki humanistyczne</option>
@@ -107,6 +114,7 @@ const FirstStep = () =>{
         type="number"
         name="pages"
         id="pages"
+        defaultValue={firstStepData.pages}
         onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
       />
       </div>

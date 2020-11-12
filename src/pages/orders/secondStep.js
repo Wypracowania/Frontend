@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { CancelButton } from "./cancelButton";
 import "../../styles/components/secondStep.scss";
 
-const SecondStep = () => {
+const SecondStep = (props) => {
 
-  const [secondStepData, setData] = useState({
+  const [secondStepData, setData] = useState(props.secondStepData || {
     subject: "lektury szkolne",
     instructions: "brak"
   });
@@ -81,6 +81,7 @@ const SecondStep = () => {
             type="text"
             name="topic"
             id="topic"
+            defaultValue={secondStepData.topic}
             onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
           />
           <br />
@@ -89,6 +90,7 @@ const SecondStep = () => {
         <select
           name="subject"
           id="subject"
+          defaultValue={secondStepData.subject}
           onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
         >
           <option value="Lektury szkolne">Lektury szkolne</option>
@@ -103,6 +105,7 @@ const SecondStep = () => {
         name="instructions" 
         rows="10" 
         cols="40"
+        defaultValue={secondStepData.instructions}
         placeholder="Tutaj wpisz swoje instrukcje dotyczące zadania.
         Upewnij się, że nie zawierają żadnych osobistych informacji, jak np. nr telefonu, czy adres e-mail."
         onChange={(e) => {setData({ ...secondStepData, [e.target.name]: e.target.value })}}
