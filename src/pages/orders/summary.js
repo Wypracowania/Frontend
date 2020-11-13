@@ -50,7 +50,6 @@ const Summary = (props) => {
 
     // merge two states into one object
     Object.assign(data, props.firstStepData, props.secondStepData);
-    console.log(data);
     useEffect(() =>{
         if(isSubmited === false){
           return;

@@ -80,7 +80,6 @@ const FirstStep = (props) =>{
       }
   }, [isValid])
 
-  console.log(firstStepData);
   return(
     <div className="step-container">
       <div className="first-step step">
