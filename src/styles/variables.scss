@@ -2,9 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap'); // font from fontawsome 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons'); // Arrow used in select elements
+
+
 $background: white;
 $navLinksColor:#eaefff;
 $fontColor:#2E384D;
 
+
+// Buttons
 $nextStepButtonBgc:#0078CE;
 $defaultButtonBgc: #DADADA;
+
+
+// margins
+
+$marginB: 20px;
+$marginM: 15px;
+$marginS: 10px;

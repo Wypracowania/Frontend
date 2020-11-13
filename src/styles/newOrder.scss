@@ -2,12 +2,36 @@
 
 @import "./variables.scss";
 
-
 // NEW ORDER STYLES
 
 .newOrder{
   background-color: #F8FAFB;
   width: 100%;
+  width: 1020px;
+  margin: $marginB;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.step{
+  background-color: white;
+  margin-top: $marginB;
+  padding: 44px;
+  box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+  box-sizing: border-box;
+}
+
+
+// Second step container, I need to have him here because styles won't change
+.second-step{
+  padding: 12px 44px;
+}
+
+
+.newOrder_header{
+  color:#324552;
+  font-weight: 400;
+  font-size: 28px;
 }
 
 
@@ -23,7 +47,9 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 32px;
-  color: #2E384D;
+  margin-top: $marginM;
+  margin-bottom: $marginM;
+  color:$fontColor;
 }
 
 
@@ -32,7 +58,7 @@
   font-size: 1rem;
   font-weight: 200;
   padding: 10px;
-  margin: 5px;
+  margin: $marginM auto;
   border: 1px solid #EAEFFF;
   position: relative;
   border-radius: 7px;
@@ -42,7 +68,7 @@
 .form-element select {
   width: 100%;
   border: 0;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 200;
   background: transparent;
   outline: none;
@@ -56,7 +82,7 @@
 .form-element:after {
   content: 'keyboard_arrow_down';
   font-family: 'material icons';
-  font-size: 24px;
+  font-size: 2rem;
   color: #666;
   position: absolute;
   right: 10px;
@@ -69,26 +95,26 @@
   width: 175px;
   height: 46px;
   font-size: 1rem;
-  background-color: #DADADA;
+  background-color: $defaultButtonBgc;
   border: none;
   border-radius: 4px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: $marginM;
+  margin-right: $marginM;
   transition: .2s ease-in;
-  border-bottom: 2px solid darken(#DADADA, 5%);
+  border-bottom: 2px solid darken($defaultButtonBgc, 5%);
   &:hover{
-    background-color: darken(#DADADA, 10%);
+    background-color: darken($defaultButtonBgc, 10%);
     transform: translateY(1px);
   }
 }
 
 .next-step{
-  background-color: #0078CE;
+  background-color: $nextStepButtonBgc;
   color: #fff;
-  border-color: darken(#0078CE, 5%);
-  margin-right: 30px;
+  border-color: darken($nextStepButtonBgc, 5%);
+  margin-right: $marginB;
   &:hover{
-    background-color: darken(#0078CE, 10%);
+    background-color: darken($nextStepButtonBgc, 10%);
   }
 }
 

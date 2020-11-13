@@ -19,3 +19,17 @@ export function firstStepVisible(bool) {
         payload: bool
     }
 }
+
+export function secondStepVisible(bool){
+    return{
+        type: 'SECOND_STEP_VISIBLE',
+        payload: bool
+    }
+}
+
+export function summaryVisible(bool){
+    return{
+        type: 'SUMMARY_VISIBLE',
+        payload: bool
+    }
+}

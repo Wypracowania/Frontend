@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../../styles/steps.scss";
+import "../../styles/components/steps.scss";
 
 const Steps = (props) =>{
 
@@ -31,16 +31,10 @@ const Steps = (props) =>{
                     2
                 </span>
             </div>
-            <div className="step-box third">
-                <span className="step-number">
-                    3
-                </span>
-            </div>
         </div>
         <div className="steps-description">
             <span>Szczegóły</span>
             <span>Instrukcja</span>
-            <span>Dodaj pliki</span>
          </div>
        </div> 
     )

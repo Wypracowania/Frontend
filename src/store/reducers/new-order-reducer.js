@@ -1,9 +1,13 @@
+import { act } from "react-dom/test-utils"
+import { summaryVisible } from "store/actions/actions-creators"
+
 // eslint-disable-next-line import/prefer-default-export
 const initialState = {
-    firstStep: {},
-    secondStep: {},
+    firstStep: "",
+    secondStep: "",
     firstStepVisible: true,
-    secondStepVisible: false
+    secondStepVisible: false,
+    summaryVisible: false
 }
 
 // eslint-disable-next-line import/prefer-default-export
@@ -30,6 +34,11 @@ export function newOrderReducer(state = initialState, action) {
             return{
                 ...state,
                 secondStepVisible: action.payload
+            }
+        case 'SUMMARY_VISIBLE':
+            return{
+                ...state,
+                summaryVisible: action.payload
             }
         default:
             return state 

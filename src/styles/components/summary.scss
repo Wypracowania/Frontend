@@ -1,0 +1,49 @@
+// IMPORTS
+
+@import "../variables.scss";
+
+// SUMMARY STYLES
+
+.summary-box{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    margin-left: -241px;
+    background-color: #CBCBCB80;
+}
+
+.summary{
+    width: 714px;
+    height: 518px;
+    padding: 95px;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 4px;
+    font-weight: 300;
+    background: #FAFAFC;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+    h2, h3{
+        font-weight: 300;
+    }
+}
+
+.summary-data{
+    margin-top: 10px;
+}
+
+.summary-buttons{
+    margin-top: $marginB*2;
+    display: flex;
+    justify-content: space-between;
+    .button{
+        width: 329px;
+        padding: 0;
+    }
+    .next-step{
+        width: 50%;
+    }
+}
