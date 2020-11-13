@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 export const CancelButton = () => {
     const [isClicked, changeClick] = useState(false);
+    const [isRedirected, changeRedirect] = useState(false);
     const dispatch = useDispatch();
     
     const firstStepVisible = (bool) => ({
@@ -23,7 +24,6 @@ export const CancelButton = () => {
       payload: data
     });
 
-
   useEffect(() =>{
     if(isClicked === false){
         return;
@@ -36,5 +36,6 @@ export const CancelButton = () => {
     }
   }, [isClicked])
 
-return <button type="button" className="button" onClick={()=>{changeClick(true)}} >Anuluj</button>
+
+return <div><button type="button" className="button" onClick={()=>{changeClick(true); changeRedirect(true)}} >Anuluj</button>{isRedirected ? <Redirect to="/wszystkie-zamowienia" /> : ""}</div>
 }
