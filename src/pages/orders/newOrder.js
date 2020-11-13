@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Steps from './steps';
 import AuthenticationWrapper from '../authentication/Authentication';
 import FirstStep from './firstStep';
@@ -11,6 +11,7 @@ import Summary from './summary';
 
 const NewOrder = () => {
 
+  const dispatch = useDispatch();
   // setting state from Redux
   const firstStep = useSelector(
     state => state.newOrderReducer.firstStep

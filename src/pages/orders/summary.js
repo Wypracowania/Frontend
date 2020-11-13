@@ -50,6 +50,7 @@ const Summary = (props) => {
 
     // merge two states into one object
     Object.assign(data, props.firstStepData, props.secondStepData);
+    console.log(data);
     useEffect(() =>{
         if(isSubmited === false){
           return;
@@ -70,12 +71,8 @@ const Summary = (props) => {
           setID(response.id);
           created(true);
           // if request is created we are reseting the state
-          dispatch(firstStepDataUpload({
-            document: "WYP",
-            category: "HUM",
-            pages: 1
-          }))
-          dispatch(secondStepDataUpload({}));
+          dispatch(firstStepDataUpload(""))
+          dispatch(secondStepDataUpload(""));
           dispatch(summaryVisible(false));
           dispatch(secondStepVisible(false));
           dispatch(firstStepVisible(true));

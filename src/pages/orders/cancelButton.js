@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 export const CancelButton = () => {
@@ -6,33 +7,34 @@ export const CancelButton = () => {
     const dispatch = useDispatch();
     
     const firstStepVisible = (bool) => ({
-    type: "FIRST_STEP_VISIBLE",
-    payload: bool
+      type: "FIRST_STEP_VISIBLE",
+      payload: bool
     });
     const secondStepVisible = (bool) => ({
-    type: "SECOND_STEP_VISIBLE",
-    payload: bool
+      type: "SECOND_STEP_VISIBLE",
+      payload: bool
     })
     const firstStepDataUpload = ( data ) => ({ 
-    type: "FIRST_STEP_SUCCESS",
-    payload: data
+      type: "FIRST_STEP_SUCCESS",
+      payload: data
     });
     const secondStepDataUpload = ( data ) => ({ 
-    type: "SECOND_STEP_SUCCESS",
-    payload: data
+      type: "SECOND_STEP_SUCCESS",
+      payload: data
     });
+
 
   useEffect(() =>{
     if(isClicked === false){
         return;
     }
     else{
-        dispatch(secondStepVisible(false));
+        dispatch(firstStepDataUpload(""));
+        dispatch(secondStepDataUpload(""));
         dispatch(firstStepVisible(true));
-        dispatch(firstStepDataUpload({}));
-        dispatch(secondStepDataUpload({}));
+        dispatch(secondStepVisible(false));
     }
   }, [isClicked])
 
-  return <button type="button" className="button" onClick={()=>{changeClick(true)}} >Anuluj</button>
+return <button type="button" className="button" onClick={()=>{changeClick(true)}} >Anuluj</button>
 }

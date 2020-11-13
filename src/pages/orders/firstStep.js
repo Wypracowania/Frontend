@@ -35,6 +35,8 @@ const FirstStep = (props) =>{
     if(isSubmitted === true){
     const pages = document.querySelector(".pages");
     const deadline = document.querySelector(".deadline");
+    const today = new Date();
+    const deadlineDate = new Date(deadline.value);
     if(pages.value <= 0){
       pages.classList.add("error");
       changeSubmit(false);
@@ -42,15 +44,28 @@ const FirstStep = (props) =>{
     else{
       pages.classList.remove("error");
     }
-    if(deadline.value === ""){
+    if(deadline.value === "" || deadlineDate.getDate() <= today.getDate() || deadlineDate.getMonth() < today.getMonth()){
       deadline.classList.add("error");
       changeSubmit(false);
     }
     else{
       deadline.classList.remove("error");
     }
-    if(pages.value > 0 && deadline.value !== ""){
-      changeValidation(true);
+
+    if(deadline.value !== ""){
+      if(deadlineDate.getFullYear() > today.getFullYear()){
+        changeValidation(true)
+      }
+      else{
+        if(deadlineDate.getMonth() + 1 === today.getMonth() + 1){
+          if(deadlineDate.getDate() >= today.getDate()){
+            changeValidation(true);
+          }
+        }
+        if(deadlineDate.getMonth() + 1 > today.getMonth() + 1){
+          changeValidation(true);
+        }
+      }
     }
   }
   }, [isSubmitted])
@@ -65,7 +80,7 @@ const FirstStep = (props) =>{
       }
   }, [isValid])
 
-
+  console.log(firstStepData);
   return(
     <div className="step-container">
       <div className="first-step step">
@@ -75,7 +90,7 @@ const FirstStep = (props) =>{
           className="newOrder__select type" 
           name="document" 
           id="type" 
-          defaultValue={firstStepData.document}
+          defaultValue={firstStepData.document || "WYP"}
           onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}>
             <option value="WYP">Wypracowanie</option>
             <option value="ESE">Esej</option>
@@ -89,7 +104,7 @@ const FirstStep = (props) =>{
           name="deadline"
           id="deadline"
           placeholder="Ustaw datę"
-          defaultValue={firstStepData.deadline}
+          defaultValue={firstStepData.deadline || ""}
           onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
         />
         <br />
@@ -114,6 +129,7 @@ const FirstStep = (props) =>{
         type="number"
         name="pages"
         id="pages"
+        min="1"
         defaultValue={firstStepData.pages}
         onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
       />

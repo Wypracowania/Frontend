@@ -3,8 +3,8 @@ import { summaryVisible } from "store/actions/actions-creators"
 
 // eslint-disable-next-line import/prefer-default-export
 const initialState = {
-    firstStep: {},
-    secondStep: {},
+    firstStep: "",
+    secondStep: "",
     firstStepVisible: true,
     secondStepVisible: false,
     summaryVisible: false

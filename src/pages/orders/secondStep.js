@@ -7,7 +7,7 @@ const SecondStep = (props) => {
 
   const [secondStepData, setData] = useState(props.secondStepData || {
     subject: "lektury szkolne",
-    instructions: "brak"
+    instructions: ""
   });
   const [isSubmitted, changeSubmit] = useState(false);
   const [isFirstVisible, changeFirstVisibility] = useState(false);
@@ -112,7 +112,7 @@ const SecondStep = (props) => {
         />
       </div>
       <div className="second-step__buttons">
-          <CancelButton/>
+          <CancelButton />
           <button type="button" className="button" onClick={() => {changeFirstVisibility(true); changeVisibility(false)}}>Poprzedni etap</button>
           <button type="button" className="button next-step" onClick={() => {changeSubmit(true); changeVisibility(true)}}>Przejdź dalej</button>
       </div>
