@@ -28,7 +28,7 @@ const OrderDetails = () => {
   return (
     <AuthenticationWrapper>
         <div>
-            <OrderDetailsHeader orderData={order} />
+            <OrderDetailsHeader orderData={{...order}} />
         </div> 
         
     </AuthenticationWrapper>
