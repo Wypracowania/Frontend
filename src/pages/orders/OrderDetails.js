@@ -4,6 +4,7 @@ import { ORDER_DETAIL_URL } from 'globalVariables';
 import { getUsername } from 'authentication';
 import OrderDetailsHeader from "./orderDetailsHeader";
 import AuthenticationWrapper from '../authentication/Authentication';
+import "../.././styles/orderDetails.scss";
 
 const OrderDetails = () => {
     // Param from url
@@ -27,10 +28,9 @@ const OrderDetails = () => {
         )}, [])
   return (
     <AuthenticationWrapper>
-        <div>
+        <div className="orderDetails">
             <OrderDetailsHeader orderData={{...order}} />
-        </div> 
-        
+        </div>         
     </AuthenticationWrapper>
   );
 };

@@ -1,0 +1,48 @@
+// IMPORTS
+
+@import "../variables.scss";
+
+// ORDERHEADERDETAILS
+
+.orderDetailsHeader__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $marginB;
+}
+
+.orderDetailsHeader__title-header{
+    color: #324552;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+.details-button{
+    width: 200px;
+    height: 40px;
+}
+
+.orderDetailsHeader__details{
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+    box-sizing: border-box;
+    padding: 38px;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.orderDetailsHeader__details-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.orderDetailsHeader__details-document{
+    width: 100%;
+}
+
+.orderDetailsHeader__details-timeLeft{
+    font-weight: 500;
+}
