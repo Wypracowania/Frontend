@@ -6,8 +6,8 @@ import "../../styles/components/firstStep.scss";
 const FirstStep = (props) =>{
 
   const [firstStepData, setData] = useState(props.firstStepData || {
-    document: "WYP",
-    category: "HUM",
+    document: "Wypracowanie",
+    category: "Humanistyczne",
     pages: 1
   });
   const [isSubmitted, changeSubmit] = useState(false);
@@ -91,8 +91,8 @@ const FirstStep = (props) =>{
           id="type" 
           defaultValue={firstStepData.document || "WYP"}
           onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}>
-            <option value="WYP">Wypracowanie</option>
-            <option value="ESE">Esej</option>
+            <option value="Wypracowanie">Wypracowanie</option>
+            <option value="Esej">Esej</option>
           </select>
         </div>
         <label className="newOrder__form-label" for="deadline">Deadline:</label>
@@ -116,9 +116,9 @@ const FirstStep = (props) =>{
           defaultValue={firstStepData.category || "Nauki humanistyczne"}
           onChange={(e) => {setData({ ...firstStepData, [e.target.name]: e.target.value })}}
         >
-          <option value="HUM">Nauki humanistyczne</option>
-          <option value="PRZ">Nauki przyrodnicze</option>
-          <option value="ŚCI">Nauki ścisłe</option>
+          <option value="Humanistyczne">Nauki humanistyczne</option>
+          <option value="Przyrodnicze">Nauki przyrodnicze</option>
+          <option value="Ścisłe">Nauki ścisłe</option>
         </select>
         </div>
       <label className="newOrder__form-label" for="pages">Ilość stron:</label>
