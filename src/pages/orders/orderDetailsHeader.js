@@ -11,16 +11,30 @@ const OrderDetailsHeader = (props) =>{
         const today = new Date();
         let daysLeft = (today.getDate() - deadlineDate.getDate());
         let monthsLeft = (today.getMonth() + 1 ) - (deadlineDate.getMonth() + 1);
+        if(today.getFullYear() < deadlineDate.getFullYear()){
+            monthsLeft = deadlineDate.getMonth() + 1;
+        }
+        if(today.getDate() === deadlineDate.getDate()){
+            daysLeft = 0;
+            monthsLeft = 1;
+        }
         if(daysLeft < 0){
             daysLeft *= (-1);
         }
-        if(monthsLeft < 1){
-            timeLeft.innerHTML =  `Do końca zostało ${daysLeft} dni`;
+        else{
+            daysLeft *= 1;
+        }
+        if(monthsLeft < 1 || daysLeft < 1){
+            if(monthsLeft < 1){
+                timeLeft.innerHTML =  `Do końca zostało ${daysLeft} dni.`;
+            }
+            if(daysLeft < 1){
+                timeLeft.innerHTML = `do końca został ${monthsLeft} miesiąc.`;
+            }
         }
         else{
             timeLeft.innerHTML = `Do końca zostało ${daysLeft} dni oraz ${monthsLeft} miesięcy.`
         }
-        console.log(daysLeft)
     })
 
     return(
