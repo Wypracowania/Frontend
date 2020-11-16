@@ -47,7 +47,6 @@ const Summary = (props) => {
 
     // Here the merged state of the two components will be stored
     let data = {};
-
     // merge two states into one object
     Object.assign(data, props.firstStepData, props.secondStepData);
     useEffect(() =>{

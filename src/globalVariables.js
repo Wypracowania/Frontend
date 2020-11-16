@@ -6,7 +6,8 @@ export const ADD_ORDER_URL = 'https://wypracowania.herokuapp.com/api/user/nowe-z
 export const FETCH_ORDERS_URL = 'https://wypracowania.herokuapp.com/api/user/all/';
 
 // https://wypracowania.herokuapp.com/api/user/order/<id> NIE ZAPOMNIEC O ID ZAMOWIENIA
-export const ORDER_DETAIL_URL = 'https://wypracowania.herokuapp.com/api/user/order/';
+// https://wypracowania.herokuapp.com/api/user/bids/klient1/2/ BIDSY
+export const ORDER_DETAIL_URL = 'https://wypracowania.herokuapp.com/api/user/order';
 
 // https://wypracowania.herokuapp.com/writer/api/profile_photo/pisarz1 OSTATNI ARGUMENT TO USERNAME
 export const GET_WRITER_PHOTO = 'https://wypracowania.herokuapp.com/writer/api/profile_photo/'

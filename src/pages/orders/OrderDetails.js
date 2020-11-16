@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { ORDER_DETAIL_URL } from 'globalVariables';
+import { getUsername } from 'authentication';
+import OrderDetailsHeader from "./orderDetailsHeader";
 import AuthenticationWrapper from '../authentication/Authentication';
 
 const OrderDetails = () => {
@@ -9,8 +11,13 @@ const OrderDetails = () => {
     const [order, getOrderDetail] = useState(null)
     
     useEffect(()=>{
-        const url = `${ORDER_DETAIL_URL  }${id}/`
-        fetch(url)
+        const url = `${ORDER_DETAIL_URL}/${id}/`
+        fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            },
+        })
         .then(res => res.json())
         .then(res => {
             getOrderDetail(res)
@@ -20,10 +27,10 @@ const OrderDetails = () => {
         )}, [])
   return (
     <AuthenticationWrapper>
-        <div>Order Detail</div>
-        { order ? 
-        <div>Temat: { order.topic } Deadline: { order.deadline }</div>
-         : null}
+        <div>
+            <OrderDetailsHeader orderData={order} />
+        </div> 
+        
     </AuthenticationWrapper>
   );
 };
