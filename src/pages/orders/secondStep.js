@@ -6,7 +6,7 @@ import "../../styles/components/secondStep.scss";
 const SecondStep = (props) => {
 
   const [secondStepData, setData] = useState(props.secondStepData || {
-    subject: "lektury szkolne",
+    subject: "Lektury szkolne",
     instructions: ""
   });
   const [isSubmitted, changeSubmit] = useState(false);
