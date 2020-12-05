@@ -1,5 +1,5 @@
-import React from 'react'
-import {NavLink, Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useSelector } from 'react-redux';
 import { 
@@ -11,14 +11,39 @@ import {
     faCommentDots
 } from '@fortawesome/free-solid-svg-icons'
 import '../styles/navside.scss'; // assuming a styles directory under src/
+import { checkUnreadedMessages } from '../globalVariables'
+import { getUsername } from '../authentication'
 
 
 const Navside = () => {
     // Get username from redux
+    const [newMessage, checkNewMessage] = useState(false)
+    const [url, setUrl] = useState('')
+
     const username = useSelector(
         state => state.userReducer.username
     );
     const UserIcon = String(username[0]).toUpperCase()
+
+    // Schować powiadomienie o nowej wiadomosci
+    const readMessage =() => {
+        checkNewMessage(false)
+    }
+
+    useEffect(() => {
+        if(!newMessage && url !== "wiadomosci") {
+            const checkForNewMessages = setInterval(()=>{
+                checkUnreadedMessages(getUsername())
+                .then(res => {
+                    if(res.new_message) {
+                        checkNewMessage(true)
+                    }
+                })
+            }, 12000)
+
+            return () => clearInterval(checkForNewMessages);
+        }
+    }, [newMessage, url])
 
     return (
     <nav className="navside">
@@ -41,14 +66,33 @@ const Navside = () => {
             </div>
         </div>
         <ul>
-            <NavLink to="/nowe-zamowienie" className="navside__link" activeClassName="navside-active" >
-                <span> <FontAwesomeIcon icon={faPlus} />Nowe zamówienie</span>
+            <NavLink 
+                to="/nowe-zamowienie" 
+                className="navside__link" 
+                activeClassName="navside-active"
+                onClick={()=>setUrl('nowe-zamowienie')}
+                > <span> <FontAwesomeIcon icon={faPlus} />Nowe zamówienie</span>
             </NavLink>
-            <NavLink to="/wszystkie-zamowienia" className="navside__link" activeClassName="navside-active">
-                <span><FontAwesomeIcon icon={faThLarge} />Moje zamówienia</span>
+            <NavLink 
+                to="/wszystkie-zamowienia" 
+                className="navside__link" 
+                activeClassName="navside-active"
+                onClick={()=>setUrl('wszystkie-zamowienia')}
+                > <span><FontAwesomeIcon icon={faThLarge} />Moje zamówienia</span>
             </NavLink>
-            <NavLink to="/wiadomosci" className="navside__link" activeClassName="navside-active">
-                <span><FontAwesomeIcon icon={faCommentDots} />Wiadomości</span>
+            <NavLink 
+                to="/wiadomosci" 
+                className="navside__link" 
+                activeClassName="navside-active"
+                onClick={()=> {
+                    readMessage()
+                    setUrl('wiadomosci')
+                    }}>
+                <span>
+                    <FontAwesomeIcon icon={faCommentDots} />
+                    Wiadomości 
+                </span>
+                <div className="new-message" style={newMessage ? {display: "block"} : {display: "none"}} />
             </NavLink>
             <NavLink to="/pomoc" className="navside__link" activeClassName="navside_active">
                 <span> <FontAwesomeIcon icon={faQuestion} />Pomoc</span>

@@ -18,6 +18,19 @@
         width: 221px;
     }
 
+    .new-message {
+        transition: .2s;
+        position: absolute;
+        height: 12px;
+        border-radius: 50%;
+        width: 12px;
+        text-align: center;
+        color: white;
+        right: 20px;
+        top: calc(50% - 6px);
+        background-color: rgb(214, 132, 132);
+    }
+
     .navside__link{
         color: $fontColor;
         text-decoration: none;

@@ -1,0 +1,51 @@
+.new-order-button {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.new-order-button a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: white;
+  background-color: #0078CE;
+  width: 236px;
+  -webkit-transition: .1s;
+  transition: .1s;
+  height: 46px;
+  padding: 0px 22px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.new-order-button a p {
+  width: 100%;
+  color: white;
+  text-align: end;
+  margin: 13px 6px 20px 0;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.new-order-button a svg {
+  font-size: 20px;
+  height: 100%;
+}
+
+.new-order-button:hover a {
+  background-color: #2197eb;
+}
+/*# sourceMappingURL=newOrderBtn.css.map */

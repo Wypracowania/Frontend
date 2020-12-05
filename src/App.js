@@ -8,7 +8,7 @@ import './styles/app.scss'
 import Login from 'pages/authentication/login';
 import Registration from 'pages/registration';
 import Navside from 'components/Navside';
-import Chat from 'pages/Chat'
+import Chat from 'pages/chat/Chat'
 
 function App() {
   return (

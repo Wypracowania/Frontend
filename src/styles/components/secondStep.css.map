@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACEA,OAAO,CAAC,uFAAI;AACZ,OAAO,CAAC,8DAAI;ADGZ,AAAA,qBAAqB,CAAA;EACjB,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,QAAQ;EACzB,UAAU,EAAE,IAAc;EAC1B,aAAa,ECQP,IAAI;CDJb;;AATD,AAMI,qBANiB,AAMhB,YAAa,GAAC;EACX,YAAY,EAAE,UAAU;CAC3B",
+    "sources": [
+        "secondStep.scss",
+        "../variables.scss"
+    ],
+    "names": [],
+    "file": "secondStep.css"
+}

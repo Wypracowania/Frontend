@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACEA,OAAO,CAAC,uFAAI;AACZ,OAAO,CAAC,8DAAI;ADGZ,AAAA,oBAAoB,CAAA;EAChB,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,QAAQ;EACzB,UAAU,EAAE,IAAc;EAC1B,aAAa,ECQP,IAAI;CDPb",
+    "sources": [
+        "firstStep.scss",
+        "../variables.scss"
+    ],
+    "names": [],
+    "file": "firstStep.css"
+}

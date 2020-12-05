@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+.newOrder {
+  background-color: #F8FAFB;
+  width: 100%;
+  width: 1020px;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.step {
+  background-color: white;
+  margin-top: 20px;
+  padding: 44px;
+  -webkit-box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+          box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.second-step {
+  padding: 12px 44px;
+}
+
+.newOrder_header {
+  color: #324552;
+  font-weight: 400;
+  font-size: 28px;
+}
+
+.newOrder__select {
+  background: rgba(224, 231, 255, 0.2);
+  border: 1px solid #EAEFFF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.newOrder__form-label {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 32px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #2E384D;
+}
+
+.form-element {
+  font-size: 1rem;
+  font-weight: 200;
+  padding: 10px;
+  margin: 15px auto;
+  border: 1px solid #EAEFFF;
+  position: relative;
+  border-radius: 7px;
+  background: rgba(224, 231, 255, 0.2);
+}
+
+.form-element select {
+  width: 100%;
+  border: 0;
+  font-size: 1rem;
+  font-weight: 200;
+  background: transparent;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.form-element select option {
+  color: black;
+  background-color: #EAEFFF;
+}
+
+.form-element:after {
+  content: 'keyboard_arrow_down';
+  font-family: 'material icons';
+  font-size: 2rem;
+  color: #666;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.button {
+  width: 175px;
+  height: 46px;
+  font-size: 1rem;
+  background-color: #DADADA;
+  border: none;
+  border-radius: 4px;
+  margin-left: 15px;
+  margin-right: 15px;
+  -webkit-transition: .2s ease-in;
+  transition: .2s ease-in;
+  border-bottom: 2px solid #cdcdcd;
+}
+
+.button:hover {
+  background-color: #c1c1c1;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+.next-step {
+  background-color: #0078CE;
+  color: #fff;
+  border-color: #0069b5;
+  margin-right: 20px;
+}
+
+.next-step:hover {
+  background-color: #005a9b;
+}
+
+.text-area {
+  width: 100%;
+  resize: none;
+}
+
+.error {
+  border: 1px solid red;
+  color: red;
+}
+/*# sourceMappingURL=newOrder.css.map */
