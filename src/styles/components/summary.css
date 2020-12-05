@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+.summary-box {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  margin-left: -241px;
+  background-color: #CBCBCB80;
+}
+
+.summary {
+  width: 714px;
+  height: 518px;
+  padding: 95px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  border-radius: 4px;
+  font-weight: 300;
+  background: #FAFAFC;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+          box-shadow: 0px 2px 4px rgba(105, 112, 117, 0.2);
+}
+
+.summary h2, .summary h3 {
+  font-weight: 300;
+}
+
+.summary-data {
+  margin-top: 10px;
+}
+
+.summary-buttons {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.summary-buttons .button {
+  width: 329px;
+  padding: 0;
+}
+
+.summary-buttons .next-step {
+  width: 50%;
+}
+/*# sourceMappingURL=summary.css.map */

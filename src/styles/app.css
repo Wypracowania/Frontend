@@ -1,0 +1,12 @@
+.app-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #f8fafb;
+  padding-left: 241px;
+}
+/*# sourceMappingURL=app.css.map */
